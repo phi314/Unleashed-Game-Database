@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  genre: MyString
+  publisher: MyString
+  size: 9.99
+  total_disc: 1
+
+two:
+  title: MyString
+  genre: MyString
+  publisher: MyString
+  size: 9.99
+  total_disc: 1

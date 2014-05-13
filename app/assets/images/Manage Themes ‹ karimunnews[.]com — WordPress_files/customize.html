@@ -1,0 +1,2509 @@
+<html xmlns="http://www.w3.org/1999/xhtml" class="" lang="en-US"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8"><style id="iris-css">.iris-picker{display:block;position:relative}.iris-picker,.iris-picker *{-moz-box-sizing:content-box;-webkit-box-sizing:content-box;box-sizing:content-box}input+.iris-picker{margin-top:4px}.iris-error{background-color:#ffafaf}.iris-border{border-radius:3px;border:1px solid #aaa;width:200px;background-color:#fff}.iris-picker-inner{position:absolute;top:0;right:0;left:0;bottom:0}.iris-border .iris-picker-inner{top:10px;right:10px;left:10px;bottom:10px}.iris-picker .iris-square-inner{position:absolute;left:0;right:0;top:0;bottom:0}.iris-picker .iris-square,.iris-picker .iris-slider,.iris-picker .iris-square-inner,.iris-picker .iris-palette{border-radius:3px;box-shadow:inset 0 0 5px rgba(0,0,0,.4);height:100%;width:12.5%;float:left;margin-right:5%}.iris-picker .iris-square{width:76%;margin-right:10%;position:relative}.iris-picker .iris-square-inner{width:auto;margin:0}.iris-ie-9 .iris-square,.iris-ie-9 .iris-slider,.iris-ie-9 .iris-square-inner,.iris-ie-9 .iris-palette{box-shadow:none;border-radius:0}.iris-ie-9 .iris-square,.iris-ie-9 .iris-slider,.iris-ie-9 .iris-palette{outline:1px solid rgba(0,0,0,.1)}.iris-ie-lt9 .iris-square,.iris-ie-lt9 .iris-slider,.iris-ie-lt9 .iris-square-inner,.iris-ie-lt9 .iris-palette{outline:1px solid #aaa}.iris-ie-lt9 .iris-square .ui-slider-handle{outline:1px solid #aaa;background-color:#fff;-ms-filter:"alpha(Opacity=30)"}.iris-ie-lt9 .iris-square .iris-square-handle{background:0;border:3px solid #fff;-ms-filter:"alpha(Opacity=50)"}.iris-picker .iris-strip{margin-right:0;position:relative}.iris-picker .iris-strip .ui-slider-handle{position:absolute;background:0;margin:0;right:-3px;left:-3px;border:4px solid #aaa;border-width:4px 3px;width:auto;height:6px;border-radius:4px;box-shadow:0 1px 2px rgba(0,0,0,.2);opacity:.9;z-index:5;cursor:ns-resize}.iris-strip .ui-slider-handle:before{content:" ";position:absolute;left:-2px;right:-2px;top:-3px;bottom:-3px;border:2px solid #fff;border-radius:3px}.iris-picker .iris-slider-offset{position:absolute;top:11px;left:0;right:0;bottom:-3px;width:auto;height:auto;background:transparent;border:0;top:none;border-radius:0}.iris-picker .iris-square-handle{background:transparent;border:5px solid #aaa;border-radius:50%;border-color:rgba(128,128,128,.5);box-shadow:none;width:12px;height:12px;position:absolute;left:-10px;top:-10px;cursor:move;opacity:1;z-index:10}.iris-picker .ui-state-focus .iris-square-handle{opacity:.8}.iris-picker .iris-square-handle:hover{border-color:#999}.iris-picker .iris-square-value:focus .iris-square-handle{box-shadow:0 0 2px rgba(0,0,0,.75);opacity:.8}.iris-picker .iris-square-handle:hover::after{border-color:#fff}.iris-picker .iris-square-handle::after{position:absolute;bottom:-4px;right:-4px;left:-4px;top:-4px;border:3px solid #f9f9f9;border-color:rgba(255,255,255,.8);border-radius:50%;content:" "}.iris-picker .iris-square-value{width:8px;height:8px;position:absolute}.iris-ie-lt9 .iris-square-value,.iris-mozilla .iris-square-value{width:1px;height:1px}.iris-palette-container{position:absolute;bottom:0;left:0;margin:0;padding:0}.iris-border .iris-palette-container{left:10px;bottom:10px}.iris-picker .iris-palette{margin:0;cursor:pointer}</style><style type="text/css" charset="utf-8">/* See license.txt for terms of usage */
+/** reset styling **/
+.firebugResetStyles {
+    z-index: 2147483646 !important;
+    top: 0 !important;
+    left: 0 !important;
+    display: block !important;
+    border: 0 none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    outline: 0 !important;
+    min-width: 0 !important;
+    max-width: none !important;
+    min-height: 0 !important;
+    max-height: none !important;
+    position: fixed !important;
+    transform: rotate(0deg) !important;
+    transform-origin: 50% 50% !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    background: transparent none !important;
+    pointer-events: none !important;
+    white-space: normal !important;
+}
+
+.firebugBlockBackgroundColor {
+    background-color: transparent !important;
+}
+
+.firebugResetStyles:before, .firebugResetStyles:after {
+    content: "" !important;
+}
+/**actual styling to be modified by firebug theme**/
+.firebugCanvas {
+    display: none !important;
+}
+
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+.firebugLayoutBox {
+    width: auto !important;
+    position: static !important;
+}
+
+.firebugLayoutBoxOffset {
+    opacity: 0.8 !important;
+    position: fixed !important;
+}
+
+.firebugLayoutLine {
+    opacity: 0.4 !important;
+    background-color: #000000 !important;
+}
+
+.firebugLayoutLineLeft, .firebugLayoutLineRight {
+    width: 1px !important;
+    height: 100% !important;
+}
+
+.firebugLayoutLineTop, .firebugLayoutLineBottom {
+    width: 100% !important;
+    height: 1px !important;
+}
+
+.firebugLayoutLineTop {
+    margin-top: -1px !important;
+    border-top: 1px solid #999999 !important;
+}
+
+.firebugLayoutLineRight {
+    border-right: 1px solid #999999 !important;
+}
+
+.firebugLayoutLineBottom {
+    border-bottom: 1px solid #999999 !important;
+}
+
+.firebugLayoutLineLeft {
+    margin-left: -1px !important;
+    border-left: 1px solid #999999 !important;
+}
+
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+.firebugLayoutBoxParent {
+    border-top: 0 none !important;
+    border-right: 1px dashed #E00 !important;
+    border-bottom: 1px dashed #E00 !important;
+    border-left: 0 none !important;
+    position: fixed !important;
+    width: auto !important;
+}
+
+.firebugRuler{
+    position: absolute !important;
+}
+
+.firebugRulerH {
+    top: -15px !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 14px !important;
+    background: url("data:image/png,%89PNG%0D%0A%1A%0A%00%00%00%0DIHDR%00%00%13%88%00%00%00%0E%08%02%00%00%00L%25a%0A%00%00%00%04gAMA%00%00%D6%D8%D4OX2%00%00%00%19tEXtSoftware%00Adobe%20ImageReadyq%C9e%3C%00%00%04%F8IDATx%DA%EC%DD%D1n%E2%3A%00E%D1%80%F8%FF%EF%E2%AF2%95%D0D4%0E%C1%14%B0%8Fa-%E9%3E%CC%9C%87n%B9%81%A6W0%1C%A6i%9A%E7y%0As8%1CT%A9R%A5J%95*U%AAT%A9R%A5J%95*U%AAT%A9R%A5J%95*U%AAT%A9R%A5J%95*U%AAT%A9R%A5J%95*U%AAT%A9R%A5J%95*U%AAT%A9R%A5J%95*U%AATE9%FE%FCw%3E%9F%AF%2B%2F%BA%97%FDT%1D~K(%5C%9D%D5%EA%1B%5C%86%B5%A9%BDU%B5y%80%ED%AB*%03%FAV9%AB%E1%CEj%E7%82%EF%FB%18%BC%AEJ8%AB%FA'%D2%BEU9%D7U%ECc0%E1%A2r%5DynwVi%CFW%7F%BB%17%7Dy%EACU%CD%0E%F0%FA%3BX%FEbV%FEM%9B%2B%AD%BE%AA%E5%95v%AB%AA%E3E5%DCu%15rV9%07%B5%7F%B5w%FCm%BA%BE%AA%FBY%3D%14%F0%EE%C7%60%0EU%AAT%A9R%A5J%95*U%AAT%A9R%A5J%95*U%AAT%A9R%A5J%95*U%AAT%A9R%A5J%95*U%AAT%A9R%A5JU%88%D3%F5%1F%AE%DF%3B%1B%F2%3E%DAUCNa%F92%D02%AC%7Dm%F9%3A%D4%F2%8B6%AE*%BF%5C%C2Ym~9g5%D0Y%95%17%7C%C8c%B0%7C%18%26%9CU%CD%13i%F7%AA%90%B3Z%7D%95%B4%C7%60%E6E%B5%BC%05%B4%FBY%95U%9E%DB%FD%1C%FC%E0%9F%83%7F%BE%17%7DkjMU%E3%03%AC%7CWj%DF%83%9An%BCG%AE%F1%95%96yQ%0Dq%5Dy%00%3Et%B5'%FC6%5DS%95pV%95%01%81%FF'%07%00%00%00%00%00%00%00%00%00%F8x%C7%F0%BE%9COp%5D%C9%7C%AD%E7%E6%EBV%FB%1E%E0(%07%E5%AC%C6%3A%ABi%9C%8F%C6%0E9%AB%C0'%D2%8E%9F%F99%D0E%B5%99%14%F5%0D%CD%7F%24%C6%DEH%B8%E9rV%DFs%DB%D0%F7%00k%FE%1D%84%84%83J%B8%E3%BA%FB%EF%20%84%1C%D7%AD%B0%8E%D7U%C8Y%05%1E%D4t%EF%AD%95Q%BF8w%BF%E9%0A%BF%EB%03%00%00%00%00%00%00%00%00%00%B8vJ%8E%BB%F5%B1u%8Cx%80%E1o%5E%CA9%AB%CB%CB%8E%03%DF%1D%B7T%25%9C%D5(%EFJM8%AB%CC'%D2%B2*%A4s%E7c6%FB%3E%FA%A2%1E%80~%0E%3E%DA%10x%5D%95Uig%15u%15%ED%7C%14%B6%87%A1%3B%FCo8%A8%D8o%D3%ADO%01%EDx%83%1A~%1B%9FpP%A3%DC%C6'%9C%95gK%00%00%00%00%00%00%00%00%00%20%D9%C9%11%D0%C0%40%AF%3F%EE%EE%92%94%D6%16X%B5%BCMH%15%2F%BF%D4%A7%C87%F1%8E%F2%81%AE%AAvzr%DA2%ABV%17%7C%E63%83%E7I%DC%C6%0Bs%1B%EF6%1E%00%00%00%00%00%00%00%00%00%80cr%9CW%FF%7F%C6%01%0E%F1%CE%A5%84%B3%CA%BC%E0%CB%AA%84%CE%F9%BF)%EC%13%08WU%AE%AB%B1%AE%2BO%EC%8E%CBYe%FE%8CN%ABr%5Dy%60~%CFA%0D%F4%AE%D4%BE%C75%CA%EDVB%EA(%B7%F1%09g%E5%D9%12%00%00%00%00%00%00%00%00%00H%F6%EB%13S%E7y%5E%5E%FB%98%F0%22%D1%B2'%A7%F0%92%B1%BC%24z3%AC%7Dm%60%D5%92%B4%7CEUO%5E%F0%AA*%3BU%B9%AE%3E%A0j%94%07%A0%C7%A0%AB%FD%B5%3F%A0%F7%03T%3Dy%D7%F7%D6%D4%C0%AAU%D2%E6%DFt%3F%A8%CC%AA%F2%86%B9%D7%F5%1F%18%E6%01%F8%CC%D5%9E%F0%F3z%88%AA%90%EF%20%00%00%00%00%00%00%00%00%00%C0%A6%D3%EA%CFi%AFb%2C%7BB%0A%2B%C3%1A%D7%06V%D5%07%A8r%5D%3D%D9%A6%CAu%F5%25%CF%A2%99%97zNX%60%95%AB%5DUZ%D5%FBR%03%AB%1C%D4k%9F%3F%BB%5C%FF%81a%AE%AB'%7F%F3%EA%FE%F3z%94%AA%D8%DF%5B%01%00%00%00%00%00%00%00%00%00%8E%FB%F3%F2%B1%1B%8DWU%AAT%A9R%A5J%95*U%AAT%A9R%A5J%95*U%AAT%A9R%A5J%95*U%AAT%A9R%A5J%95*U%AAT%A9R%A5J%95*U%AAT%A9R%A5J%95*U%AAT%A9R%A5J%95*UiU%C7%BBe%E7%F3%B9%CB%AAJ%95*U%AAT%A9R%A5J%95*U%AAT%A9R%A5J%95*U%AAT%A9R%A5J%95*U%AAT%A9R%A5J%95*U%AAT%A9R%A5J%95*U%AAT%A9R%A5J%95*U%AAT%A9R%A5*%AAj%FD%C6%D4%5Eo%90%B5Z%ADV%AB%D5j%B5Z%ADV%AB%D5j%B5Z%ADV%AB%D5j%B5Z%ADV%AB%D5j%B5Z%ADV%AB%D5j%B5Z%ADV%AB%D5j%B5Z%ADV%AB%D5j%B5%86%AF%1B%9F%98%DA%EBm%BBV%AB%D5j%B5Z%ADV%AB%D5j%B5Z%ADV%AB%D5j%B5Z%ADV%AB%D5j%B5Z%ADV%AB%D5j%B5Z%ADV%AB%D5j%B5Z%ADV%AB%D5j%B5Z%AD%D6%E4%F58%01%00%00%00%00%00%00%00%00%00%00%00%00%00%40%85%7F%02%0C%008%C2%D0H%16j%8FX%00%00%00%00IEND%AEB%60%82") repeat-x !important;
+    border-top: 1px solid #BBBBBB !important;
+    border-right: 1px dashed #BBBBBB !important;
+    border-bottom: 1px solid #000000 !important;
+}
+
+.firebugRulerV {
+    top: 0 !important;
+    left: -15px !important;
+    width: 14px !important;
+    height: 100% !important;
+    background: url("data:image/png,%89PNG%0D%0A%1A%0A%00%00%00%0DIHDR%00%00%00%0E%00%00%13%88%08%02%00%00%00%0E%F5%CB%10%00%00%00%04gAMA%00%00%D6%D8%D4OX2%00%00%00%19tEXtSoftware%00Adobe%20ImageReadyq%C9e%3C%00%00%06~IDATx%DA%EC%DD%D1v%A20%14%40Qt%F1%FF%FF%E4%97%D9%07%3BT%19%92%DC%40(%90%EEy%9A5%CB%B6%E8%F6%9Ac%A4%CC0%84%FF%DC%9E%CF%E7%E3%F1%88%DE4%F8%5D%C7%9F%2F%BA%DD%5E%7FI%7D%F18%DDn%BA%C5%FB%DF%97%BFk%F2%10%FF%FD%B4%F2M%A7%FB%FD%FD%B3%22%07p%8F%3F%AE%E3%F4S%8A%8F%40%EEq%9D%BE8D%F0%0EY%A1Uq%B7%EA%1F%81%88V%E8X%3F%B4%CEy%B7h%D1%A2E%EBohU%FC%D9%AF2fO%8BBeD%BE%F7X%0C%97%A4%D6b7%2Ck%A5%12%E3%9B%60v%B7r%C7%1AI%8C%BD%2B%23r%00c0%B2v%9B%AD%CA%26%0C%1Ek%05A%FD%93%D0%2B%A1u%8B%16-%95q%5Ce%DCSO%8E%E4M%23%8B%F7%C2%FE%40%BB%BD%8C%FC%8A%B5V%EBu%40%F9%3B%A72%FA%AE%8C%D4%01%CC%B5%DA%13%9CB%AB%E2I%18%24%B0n%A9%0CZ*Ce%9C%A22%8E%D8NJ%1E%EB%FF%8F%AE%CAP%19*%C3%BAEKe%AC%D1%AAX%8C*%DEH%8F%C5W%A1e%AD%D4%B7%5C%5B%19%C5%DB%0D%EF%9F%19%1D%7B%5E%86%BD%0C%95%A12%AC%5B*%83%96%CAP%19%F62T%86%CAP%19*%83%96%CA%B8Xe%BC%FE)T%19%A1%17xg%7F%DA%CBP%19*%C3%BA%A52T%86%CAP%19%F62T%86%CA%B0n%A9%0CZ%1DV%C6%3D%F3%FCH%DE%B4%B8~%7F%5CZc%F1%D6%1F%AF%84%F9%0F6%E6%EBVt9%0E~%BEr%AF%23%B0%97%A12T%86%CAP%19%B4T%86%CA%B8Re%D8%CBP%19*%C3%BA%A52huX%19%AE%CA%E5%BC%0C%7B%19*CeX%B7h%A9%0C%95%E1%BC%0C%7B%19*CeX%B7T%06%AD%CB%5E%95%2B%BF.%8F%C5%97%D5%E4%7B%EE%82%D6%FB%CF-%9C%FD%B9%CF%3By%7B%19%F62T%86%CA%B0n%D1R%19*%A3%D3%CA%B0%97%A12T%86uKe%D0%EA%B02*%3F1%99%5DB%2B%A4%B5%F8%3A%7C%BA%2B%8Co%7D%5C%EDe%A8%0C%95a%DDR%19%B4T%C66%82fA%B2%ED%DA%9FC%FC%17GZ%06%C9%E1%B3%E5%2C%1A%9FoiB%EB%96%CA%A0%D5qe4%7B%7D%FD%85%F7%5B%ED_%E0s%07%F0k%951%ECr%0D%B5C%D7-g%D1%A8%0C%EB%96%CA%A0%A52T%C6)*%C3%5E%86%CAP%19%D6-%95A%EB*%95q%F8%BB%E3%F9%AB%F6%E21%ACZ%B7%22%B7%9B%3F%02%85%CB%A2%5B%B7%BA%5E%B7%9C%97%E1%BC%0C%EB%16-%95%A12z%AC%0C%BFc%A22T%86uKe%D0%EA%B02V%DD%AD%8A%2B%8CWhe%5E%AF%CF%F5%3B%26%CE%CBh%5C%19%CE%CB%B0%F3%A4%095%A1%CAP%19*Ce%A8%0C%3BO*Ce%A8%0C%95%A12%3A%AD%8C%0A%82%7B%F0v%1F%2FD%A9%5B%9F%EE%EA%26%AF%03%CA%DF9%7B%19*Ce%A8%0C%95%A12T%86%CA%B8Ze%D8%CBP%19*Ce%A8%0C%95%D1ae%EC%F7%89I%E1%B4%D7M%D7P%8BjU%5C%BB%3E%F2%20%D8%CBP%19*Ce%A8%0C%95%A12T%C6%D5*%C3%5E%86%CAP%19*Ce%B4O%07%7B%F0W%7Bw%1C%7C%1A%8C%B3%3B%D1%EE%AA%5C%D6-%EBV%83%80%5E%D0%CA%10%5CU%2BD%E07YU%86%CAP%19*%E3%9A%95%91%D9%A0%C8%AD%5B%EDv%9E%82%FFKOee%E4%8FUe%A8%0C%95%A12T%C6%1F%A9%8C%C8%3D%5B%A5%15%FD%14%22r%E7B%9F%17l%F8%BF%ED%EAf%2B%7F%CF%ECe%D8%CBP%19*Ce%A8%0C%95%E1%93~%7B%19%F62T%86%CAP%19*Ce%A8%0C%E7%13%DA%CBP%19*Ce%A8%0CZf%8B%16-Z%B4h%D1R%19f%8B%16-Z%B4h%D1R%19%B4%CC%16-Z%B4h%D1R%19%B4%CC%16-Z%B4h%D1%A2%A52%CC%16-Z%B4h%D1%A2%A52h%99-Z%B4h%D1%A2%A52h%99-Z%B4h%D1%A2EKe%98-Z%B4h%D1%A2EKe%D02%5B%B4h%D1%A2EKe%D02%5B%B4h%D1%A2E%8B%96%CA0%5B%B4h%D1%A2E%8B%96%CA%A0e%B6h%D1%A2E%8B%96%CA%A0e%B6h%D1%A2E%8B%16-%95a%B6h%D1%A2E%8B%16-%95A%CBl%D1%A2E%8B%16-%95A%CBl%D1%A2E%8B%16-Z*%C3l%D1%A2E%8B%16-Z*%83%96%D9%A2E%8B%16-Z*%83%96%D9%A2E%8B%16-Z%B4T%86%D9%A2E%8B%16-Z%B4T%06-%B3E%8B%16-Z%B4T%06-%B3E%8B%16-Z%B4h%A9%0C%B3E%8B%16-Z%B4h%A9%0CZf%8B%16-Z%B4h%A9%0CZf%8B%16-Z%B4h%D1R%19f%8B%16-Z%B4h%D1R%19%B4%CC%16-Z%B4h%D1R%19%B4%CC%16-Z%B4h%D1%A2%A52%CC%16-Z%B4h%D1%A2%A52h%99-Z%B4h%D1%A2%A52h%99-Z%B4h%D1%A2EKe%98-Z%B4h%D1%A2EKe%D02%5B%B4h%D1%A2EKe%D02%5B%B4h%D1%A2E%8B%96%CA0%5B%B4h%D1%A2E%8B%96%CA%A0e%B6h%D1%A2E%8B%96%CA%A0e%B6h%D1%A2E%8B%16-%95a%B6h%D1%A2E%8B%16-%95A%CBl%D1%A2E%8B%16-%95A%CBl%D1%A2E%8B%16-Z*%C3l%D1%A2E%8B%16-Z*%83%96%D9%A2E%8B%16-Z*%83%96%D9%A2E%8B%16-Z%B4T%86%D9%A2E%8B%16-Z%B4T%06-%B3E%8B%16-Z%B4T%06-%B3E%8B%16-Z%B4h%A9%0C%B3E%8B%16-Z%B4h%A9%0CZf%8B%16-Z%B4h%A9%0CZf%8B%16-Z%B4h%D1R%19f%8B%16-Z%B4h%D1R%19%B4%CC%16-Z%B4h%D1R%19%B4%CC%16-Z%B4h%D1%A2%A52%CC%16-Z%B4h%D1%A2%A52h%99-Z%B4h%D1%A2%A52h%99-Z%B4h%D1%A2EKe%98-Z%B4h%D1%A2EKe%D02%5B%B4h%D1%A2EKe%D02%5B%B4h%D1%A2E%8B%96%CA0%5B%B4h%D1%A2E%8B%96%CA%A0e%B6h%D1%A2E%8B%96%CA%A0e%B6h%D1%A2E%8B%16-%95a%B6h%D1%A2E%8B%16-%95A%CBl%D1%A2E%8B%16-%95A%CBl%D1%A2E%8B%16-Z*%C3l%D1%A2E%8B%16-Z*%83%96%D9%A2E%8B%16-Z*%83%96%D9%A2E%8B%16-Z%B4T%86%D9%A2E%8B%16-Z%B4T%06-%B3E%8B%16-Z%B4%AE%A4%F5%25%C0%00%DE%BF%5C'%0F%DA%B8q%00%00%00%00IEND%AEB%60%82") repeat-y !important;
+    border-left: 1px solid #BBBBBB !important;
+    border-right: 1px solid #000000 !important;
+    border-bottom: 1px dashed #BBBBBB !important;
+}
+
+.overflowRulerX > .firebugRulerV {
+    left: 0 !important;
+}
+
+.overflowRulerY > .firebugRulerH {
+    top: 0 !important;
+}
+
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+.fbProxyElement {
+    position: fixed !important;
+    pointer-events: auto !important;
+}
+</style></head><body class="wp-core-ui wp-customizer js locale-en-us"><br>
+<b>Warning</b>:  Invalid argument supplied for foreach() in <b>/media/phi314/Data/Web Development/karimunnews/wp-admin/custom-header.php</b> on line <b>1248</b><br>
+<br>
+<b>Warning</b>:  array_merge(): Argument #2 is not an array in <b>/media/phi314/Data/Web Development/karimunnews/wp-admin/custom-header.php</b> on line <b>1268</b><br>
+<br>
+<b>Warning</b>:  Invalid argument supplied for foreach() in <b>/media/phi314/Data/Web Development/karimunnews/wp-admin/custom-header.php</b> on line <b>1248</b><br>
+<br>
+<b>Warning</b>:  array_merge(): Argument #2 is not an array in <b>/media/phi314/Data/Web Development/karimunnews/wp-admin/custom-header.php</b> on line <b>1268</b><br>
+
+<!--[if IE 8]>
+<html xmlns="http://www.w3.org/1999/xhtml" class="ie8 "  lang="en-US">
+<![endif]-->
+<!--[if !(IE 8) ]><!-->
+
+<!--<![endif]-->
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Customize Writr — WordPress</title>
+
+<script type="text/javascript">
+var ajaxurl = '/karimunnews/wp-admin/admin-ajax.php';
+</script>
+
+<link rel="stylesheet" href="customize_data/load-styles.css" type="text/css" media="all">
+<link rel="stylesheet" id="open-sans-css" href="Manage%20Themes%20%E2%80%B9%20karimunnews%5B.%5Dcom%20%E2%80%94%20WordPress_files/css.css" type="text/css" media="all">
+<!--[if lte IE 7]>
+<link rel='stylesheet' id='ie-css'  href='http://localhost/karimunnews/wp-admin/css/ie.min.css?ver=3.9' type='text/css' media='all' />
+<![endif]-->
+<link rel="stylesheet" id="imgareaselect-css" href="customize_data/imgareaselect.css" type="text/css" media="all">
+<link rel="stylesheet" id="mediaelement-css" href="customize_data/mediaelementplayer.css" type="text/css" media="all">
+<link rel="stylesheet" id="wp-mediaelement-css" href="customize_data/wp-mediaelement.css" type="text/css" media="all">
+
+<script type="text/javascript">
+/* <![CDATA[ */
+var userSettings = {"url":"\/karimunnews\/","uid":"1","time":"1399262592"};/* ]]> */
+</script>
+<script type="text/javascript" src="customize_data/load-scripts_002.js"></script>
+
+
+<div class="wp-full-overlay expanded">
+	<form id="customize-controls" class="wrap wp-full-overlay-sidebar">
+
+		<div id="customize-header-actions" class="wp-full-overlay-header">
+			<input name="save" id="save" class="button button-primary save" value="Save &amp; Publish" type="submit">			<span class="spinner"></span>
+			<a class="back button" href="http://localhost/karimunnews/wp-admin/themes.php">Cancel</a>
+		</div>
+
+		
+		<div id="widgets-right"><!-- For Widget Customizer, many widgets try to look for instances under div#widgets-right, so we have to add that ID to a container div in the customizer for compat -->
+		<div class="wp-full-overlay-sidebar-content accordion-container" tabindex="-1">
+			<div id="customize-info" class="accordion-section ">
+				<div class="accordion-section-title" aria-label="Theme Customizer Options" tabindex="0">
+					<span class="preview-notice">You are previewing <strong class="theme-name">Writr</strong></span>
+				</div>
+								<div class="accordion-section-content">
+											<img class="theme-screenshot" src="Manage%20Themes%20%E2%80%B9%20karimunnews%5B.%5Dcom%20%E2%80%94%20WordPress_files/screenshot_005.png">
+					
+											<div class="theme-description">Writr is a minimalist, 
+content-oriented tumblelog theme perfect for your personal blog. It 
+comes packed with 6 different color schemes: turquoise (default), blue, 
+green, grey, purple, and red. With a modern look and attention to crisp 
+typography, Writr put the focus on your content.</div>
+									</div>
+							</div>
+
+			<div id="customize-theme-controls"><ul>
+						<li id="accordion-section-title_tagline" class="control-section accordion-section top">
+			<h3 class="accordion-section-title" tabindex="0">Site Title &amp; Tagline</h3>
+			<ul class="accordion-section-content">
+								<li id="customize-control-blogname" class="customize-control customize-control-text">
+							<label>
+					<span class="customize-control-title">Site Title</span>
+					<input value="karimunnews[.]com" data-customize-setting-link="blogname" type="text">
+				</label>
+						</li><li id="customize-control-blogdescription" class="customize-control customize-control-text">
+							<label>
+					<span class="customize-control-title">Tagline</span>
+					<input value="Warta Berita Karimun" data-customize-setting-link="blogdescription" type="text">
+				</label>
+						</li><li id="customize-control-display_header_text" class="customize-control customize-control-checkbox">
+							<label>
+					<input checked="checked" value="ffffff" data-customize-setting-link="header_textcolor" type="checkbox">
+					Display Header Text				</label>
+						</li>			</ul>
+		</li>
+				<li id="accordion-section-colors" class="control-section accordion-section">
+			<h3 class="accordion-section-title" tabindex="0">Colors</h3>
+			<ul class="accordion-section-content">
+								<li id="customize-control-header_textcolor" class="customize-control customize-control-color">
+					<label>
+			<span class="customize-control-title">Header Text Color</span>
+			<div class="customize-control-content">
+				<div class="wp-picker-container"><a data-current="Current Color" title="Select Color" style="background-color: rgb(255, 255, 255);" tabindex="0" class="wp-color-result"></a><span class="wp-picker-input-wrap"><input value="#ffffff" style="display: none;" class="color-picker-hex wp-color-picker" maxlength="7" placeholder="Hex Value" data-default-color="#fff" type="text"><input value="Default" class="button button-small hidden wp-picker-default" type="button"></span><div class="wp-picker-holder"><div style="display: none; width: 255px; height: 202.125px; padding-bottom: 23.2209px;" class="iris-picker iris-mozilla iris-border"><div class="iris-picker-inner"><div style="width: 182.125px; height: 182.125px;" class="iris-square"><a style="left: 0px; top: 0px;" class="iris-square-value ui-draggable" href="#"><span class="iris-square-handle ui-slider-handle"></span></a><div style="background-image: -moz-linear-gradient(left center , rgb(255, 255, 255), rgb(255, 255, 255), rgb(255, 255, 255), rgb(255, 255, 255), rgb(255, 255, 255), rgb(255, 255, 255), rgb(255, 255, 255), rgb(255, 255, 255), rgb(255, 255, 255), rgb(255, 255, 255), rgb(255, 255, 255), rgb(255, 255, 255), rgb(255, 255, 255));" class="iris-square-inner iris-square-horiz"></div><div style="background-image: -moz-linear-gradient(center top , transparent, rgb(0, 0, 0));" class="iris-square-inner iris-square-vert"></div></div><div style="width: 28.2px; height: 205.346px; background-image: -moz-linear-gradient(center top , rgb(255, 0, 0), rgb(255, 255, 255));" class="iris-slider iris-strip"><div aria-disabled="false" class="iris-slider-offset ui-slider ui-slider-vertical ui-widget ui-widget-content ui-corner-all"><a style="bottom: 0%;" class="ui-slider-handle ui-state-default ui-corner-all" href="#"></a></div></div></div><div class="iris-palette-container"><a style="background-color: rgb(0, 0, 0); width: 19.5784px; height: 19.5784px; margin-left: 0px;" class="iris-palette" tabindex="0"></a><a style="background-color: rgb(255, 255, 255); width: 19.5784px; height: 19.5784px; margin-left: 3.6425px;" class="iris-palette" tabindex="0"></a><a style="background-color: rgb(221, 51, 51); width: 19.5784px; height: 19.5784px; margin-left: 3.6425px;" class="iris-palette" tabindex="0"></a><a style="background-color: rgb(221, 153, 51); width: 19.5784px; height: 19.5784px; margin-left: 3.6425px;" class="iris-palette" tabindex="0"></a><a style="background-color: rgb(238, 238, 34); width: 19.5784px; height: 19.5784px; margin-left: 3.6425px;" class="iris-palette" tabindex="0"></a><a style="background-color: rgb(129, 215, 66); width: 19.5784px; height: 19.5784px; margin-left: 3.6425px;" class="iris-palette" tabindex="0"></a><a style="background-color: rgb(30, 115, 190); width: 19.5784px; height: 19.5784px; margin-left: 3.6425px;" class="iris-palette" tabindex="0"></a><a style="background-color: rgb(130, 36, 227); width: 19.5784px; height: 19.5784px; margin-left: 3.6425px;" class="iris-palette" tabindex="0"></a></div></div></div></div>
+			</div>
+		</label>
+				</li><li id="customize-control-background_color" class="customize-control customize-control-color">
+					<label>
+			<span class="customize-control-title">Background Color</span>
+			<div class="customize-control-content">
+				<div class="wp-picker-container"><a data-current="Current Color" title="Select Color" style="background-color: rgb(48, 48, 48);" tabindex="0" class="wp-color-result"></a><span class="wp-picker-input-wrap"><input value="#303030" style="display: none;" class="color-picker-hex wp-color-picker" maxlength="7" placeholder="Hex Value" data-default-color="#303030" type="text"><input value="Default" class="button button-small hidden wp-picker-default" type="button"></span><div class="wp-picker-holder"><div style="display: none; width: 255px; height: 202.125px; padding-bottom: 23.2209px;" class="iris-picker iris-mozilla iris-border"><div class="iris-picker-inner"><div style="width: 182.125px; height: 182.125px;" class="iris-square"><a style="left: 0px; top: 147.528px;" class="iris-square-value ui-draggable" href="#"><span class="iris-square-handle ui-slider-handle"></span></a><div style="background-image: -moz-linear-gradient(left center , rgb(255, 255, 255), rgb(255, 255, 255), rgb(255, 255, 255), rgb(255, 255, 255), rgb(255, 255, 255), rgb(255, 255, 255), rgb(255, 255, 255), rgb(255, 255, 255), rgb(255, 255, 255), rgb(255, 255, 255), rgb(255, 255, 255), rgb(255, 255, 255), rgb(255, 255, 255));" class="iris-square-inner iris-square-horiz"></div><div style="background-image: -moz-linear-gradient(center top , transparent, rgb(0, 0, 0));" class="iris-square-inner iris-square-vert"></div></div><div style="width: 28.2px; height: 205.346px; background-image: -moz-linear-gradient(center top , rgb(45, 0, 0), rgb(48, 48, 48));" class="iris-slider iris-strip"><div aria-disabled="false" class="iris-slider-offset ui-slider ui-slider-vertical ui-widget ui-widget-content ui-corner-all"><a style="bottom: 0%;" class="ui-slider-handle ui-state-default ui-corner-all" href="#"></a></div></div></div><div class="iris-palette-container"><a style="background-color: rgb(0, 0, 0); width: 19.5784px; height: 19.5784px; margin-left: 0px;" class="iris-palette" tabindex="0"></a><a style="background-color: rgb(255, 255, 255); width: 19.5784px; height: 19.5784px; margin-left: 3.6425px;" class="iris-palette" tabindex="0"></a><a style="background-color: rgb(221, 51, 51); width: 19.5784px; height: 19.5784px; margin-left: 3.6425px;" class="iris-palette" tabindex="0"></a><a style="background-color: rgb(221, 153, 51); width: 19.5784px; height: 19.5784px; margin-left: 3.6425px;" class="iris-palette" tabindex="0"></a><a style="background-color: rgb(238, 238, 34); width: 19.5784px; height: 19.5784px; margin-left: 3.6425px;" class="iris-palette" tabindex="0"></a><a style="background-color: rgb(129, 215, 66); width: 19.5784px; height: 19.5784px; margin-left: 3.6425px;" class="iris-palette" tabindex="0"></a><a style="background-color: rgb(30, 115, 190); width: 19.5784px; height: 19.5784px; margin-left: 3.6425px;" class="iris-palette" tabindex="0"></a><a style="background-color: rgb(130, 36, 227); width: 19.5784px; height: 19.5784px; margin-left: 3.6425px;" class="iris-palette" tabindex="0"></a></div></div></div></div>
+			</div>
+		</label>
+				</li>			</ul>
+		</li>
+				<li id="accordion-section-header_image" class="control-section accordion-section">
+			<h3 class="accordion-section-title" tabindex="0">Header Image</h3>
+			<ul class="accordion-section-content">
+								<li id="customize-control-header_image" class="customize-control customize-control-header">
+					<script type="text/template" id="tmpl-header-choice">
+			<# if (data.random) { #>
+					<button type="button" class="button display-options random">
+						<span class="dashicons dashicons-randomize dice"></span>
+						<# if ( data.type === 'uploaded' ) { #>
+							Randomize uploaded headers						<# } else if ( data.type === 'default' ) { #>
+							Randomize suggested headers						<# } #>
+					</button>
+
+			<# } else { #>
+
+			<# if (data.type === 'uploaded') { #>
+				<div class="dashicons dashicons-no close"></div>
+			<# } #>
+
+			<button type="button" class="choice thumbnail"
+				data-customize-image-value="{{{data.header.url}}}"
+				data-customize-header-image-data="{{JSON.stringify(data.header)}}">
+				<span class="screen-reader-text">Set image</span>
+				<img src="{{{data.header.thumbnail_url}}}" alt="{{{data.header.alt_text || data.header.description}}}">
+			</button>
+
+			<# } #>
+		</script>
+
+		<script type="text/template" id="tmpl-header-current">
+			<# if (data.choice) { #>
+				<# if (data.random) { #>
+
+			<div class="placeholder">
+				<div class="inner">
+					<span><span class="dashicons dashicons-randomize dice"></span>
+					<# if ( data.type === 'uploaded' ) { #>
+						Randomizing uploaded headers					<# } else if ( data.type === 'default' ) { #>
+						Randomizing suggested headers					<# } #>
+					</span>
+				</div>
+			</div>
+
+				<# } else { #>
+
+			<img src="{{{data.header.thumbnail_url}}}" alt="{{{data.header.alt_text || data.header.description}}}" tabindex="0"/>
+
+				<# } #>
+			<# } else { #>
+
+			<div class="placeholder">
+				<div class="inner">
+					<span>
+						No image set					</span>
+				</div>
+			</div>
+
+			<# } #>
+		</script>
+		
+
+		<div class="customize-control-content">
+			<p class="customizer-section-intro">
+				While you can crop images to your liking after clicking <strong>Add new</strong>, your theme recommends a header size of <strong>120 × 120</strong> pixels.			</p>
+			<div class="current">
+				<span class="customize-control-title">
+					Current header				</span>
+				<div style="height: 40px;" class="container">
+			
+
+			<div style="height: 40px;" class="placeholder">
+				<div style="display: block;" class="inner">
+					<span>
+						No image set					</span>
+				</div>
+			</div>
+
+			
+		</div>
+			</div>
+			<div class="actions">
+								<button type="button" style="display:none" class="button remove">Hide image</button>
+								<button type="button" class="button new">Add new image</button>
+				<div style="clear:both"></div>
+			</div>
+			<div class="choices">
+				<span style="display: none;" class="customize-control-title header-previously-uploaded">
+					Previously uploaded				</span>
+				<div class="uploaded">
+					<div class="list"></div>
+				</div>
+				<span style="display: none;" class="customize-control-title header-default">
+					Suggested				</span>
+				<div class="default">
+					<div class="list"></div>
+				</div>
+			</div>
+		</div>
+				</li>			</ul>
+		</li>
+				<li id="accordion-section-background_image" class="control-section accordion-section">
+			<h3 class="accordion-section-title" tabindex="0">Background Image</h3>
+			<ul class="accordion-section-content">
+								<li style="position: relative;" id="customize-control-background_image" class="customize-control customize-control-image">
+					<div class="customize-image-picker">
+			<span class="customize-control-title">Background Image</span>
+
+			<div class="customize-control-content">
+				<div class="dropdown preview-thumbnail" tabindex="0">
+					<div class="dropdown-content">
+													<img style="display:none;">
+												<div style="display: block;" class="dropdown-status">No Image</div>
+					</div>
+					<div class="dropdown-arrow"></div>
+				</div>
+			</div>
+
+			<div class="library">
+				<ul>
+											<li class="library-selected" data-customize-tab="upload-new" tabindex="0">
+							Upload New						</li>
+											<li class="hidden" data-customize-tab="uploaded" tabindex="0">
+							Uploaded						</li>
+									</ul>
+									<div class="library-content library-selected" data-customize-tab="upload-new">
+									<div id="__wp-uploader-id-1" class="upload-dropzone supports-drag-drop">
+				Drop a file here or <a style="position: relative; z-index: 1;" id="__wp-uploader-id-0" href="#" class="upload">select a file</a>.			</div>
+			<div class="upload-fallback">
+				<span class="button-secondary">Select File</span>
+			</div>
+								</div>
+									<div class="library-content hidden" data-customize-tab="uploaded">
+						<div class="uploaded-target"></div>					</div>
+							</div>
+
+			<div class="actions">
+				<a style="display: none;" href="#" class="remove">Remove Image</a>
+			</div>
+		</div>
+				<div style="position: absolute; top: 0px; left: 0px; width: 0px; height: 0px; overflow: hidden; z-index: 0;" class="moxie-shim moxie-shim-html5" id="html5_18n58pg5t1istg2o195b18mpn1i5_container"><input id="html5_18n58pg5t1istg2o195b18mpn1i5" style="font-size: 999px; opacity: 0; position: absolute; top: 0px; left: 0px; width: 100%; height: 100%;" multiple="" accept="image/jpeg,image/gif,image/png" type="file"></div></li><li style="display: none;" id="customize-control-background_repeat" class="customize-control customize-control-radio">
+							<span class="customize-control-title">Background Repeat</span>
+									<label>
+						<input value="no-repeat" name="_customize-radio-background_repeat" data-customize-setting-link="background_repeat" checked="checked" type="radio">
+						No Repeat<br>
+					</label>
+										<label>
+						<input value="repeat" name="_customize-radio-background_repeat" data-customize-setting-link="background_repeat" type="radio">
+						Tile<br>
+					</label>
+										<label>
+						<input value="repeat-x" name="_customize-radio-background_repeat" data-customize-setting-link="background_repeat" type="radio">
+						Tile Horizontally<br>
+					</label>
+										<label>
+						<input value="repeat-y" name="_customize-radio-background_repeat" data-customize-setting-link="background_repeat" type="radio">
+						Tile Vertically<br>
+					</label>
+							</li><li style="display: none;" id="customize-control-background_position_x" class="customize-control customize-control-radio">
+							<span class="customize-control-title">Background Position</span>
+									<label>
+						<input value="left" name="_customize-radio-background_position_x" data-customize-setting-link="background_position_x" checked="checked" type="radio">
+						Left<br>
+					</label>
+										<label>
+						<input value="center" name="_customize-radio-background_position_x" data-customize-setting-link="background_position_x" type="radio">
+						Center<br>
+					</label>
+										<label>
+						<input value="right" name="_customize-radio-background_position_x" data-customize-setting-link="background_position_x" type="radio">
+						Right<br>
+					</label>
+							</li><li style="display: none;" id="customize-control-background_attachment" class="customize-control customize-control-radio">
+							<span class="customize-control-title">Background Attachment</span>
+									<label>
+						<input value="fixed" name="_customize-radio-background_attachment" data-customize-setting-link="background_attachment" checked="checked" type="radio">
+						Fixed<br>
+					</label>
+										<label>
+						<input value="scroll" name="_customize-radio-background_attachment" data-customize-setting-link="background_attachment" type="radio">
+						Scroll<br>
+					</label>
+							</li>			</ul>
+		</li>
+				<li id="accordion-section-static_front_page" class="control-section accordion-section">
+			<h3 class="accordion-section-title" tabindex="0">Static Front Page</h3>
+			<ul class="accordion-section-content">
+								<li><p class="description">Your theme supports a static front page.</p></li>
+								<li id="customize-control-show_on_front" class="customize-control customize-control-radio">
+							<span class="customize-control-title">Front page displays</span>
+									<label>
+						<input value="posts" name="_customize-radio-show_on_front" data-customize-setting-link="show_on_front" checked="checked" type="radio">
+						Your latest posts<br>
+					</label>
+										<label>
+						<input value="page" name="_customize-radio-show_on_front" data-customize-setting-link="show_on_front" type="radio">
+						A static page<br>
+					</label>
+							</li><li style="display: none;" id="customize-control-page_on_front" class="customize-control customize-control-dropdown-pages">
+			<label class="customize-control-select"><span class="customize-control-title">Front page</span> <select data-customize-setting-link="page_on_front" name="_customize-dropdown-pages-page_on_front" id="_customize-dropdown-pages-page_on_front">
+	<option selected="selected" value="0">— Select —</option>
+	<option class="level-0" value="20">About Page</option>
+	<option class="level-0" value="2">Sample Page</option>
+</select>
+</label>		</li><li style="display: none;" id="customize-control-page_for_posts" class="customize-control customize-control-dropdown-pages">
+			<label class="customize-control-select"><span class="customize-control-title">Posts page</span> <select data-customize-setting-link="page_for_posts" name="_customize-dropdown-pages-page_for_posts" id="_customize-dropdown-pages-page_for_posts">
+	<option selected="selected" value="0">— Select —</option>
+	<option class="level-0" value="20">About Page</option>
+	<option class="level-0" value="2">Sample Page</option>
+</select>
+</label>		</li>			</ul>
+		</li>
+				<li id="accordion-section-writr_theme_options" class="control-section accordion-section">
+			<h3 class="accordion-section-title" tabindex="0">Theme Options</h3>
+			<ul class="accordion-section-content bottom">
+								<li id="customize-control-writr_background_size" class="customize-control customize-control-checkbox">
+							<label>
+					<input value="" data-customize-setting-link="writr_background_size" type="checkbox">
+					Full Page Background Image				</label>
+						</li><li id="customize-control-writr_wider_style" class="customize-control customize-control-checkbox">
+							<label>
+					<input value="1" data-customize-setting-link="writr_wider_style" checked="checked" type="checkbox">
+					Wider Content Area				</label>
+						</li><li id="customize-control-writr_color_scheme" class="customize-control customize-control-select">
+							<label>
+					<span class="customize-control-title">Color Scheme</span>
+					<select data-customize-setting-link="writr_color_scheme">
+						<option value="default">Turquoise</option><option value="blue" selected="selected">Blue</option><option value="green">Green</option><option value="grey">Grey</option><option value="purple">Purple</option><option value="red">Red</option>					</select>
+				</label>
+						</li>			</ul>
+		</li>
+				<li style="display: list-item; height: auto;" id="accordion-section-sidebar-widgets-sidebar-1" class="control-section accordion-section open bottom">
+			<h3 class="accordion-section-title ui-droppable" tabindex="0">Widgets: Sidebar</h3>
+			<ul style="display: block;" class="accordion-section-content ui-sortable bottom">
+								<li id="customize-control-widget_search-2" class="customize-control customize-control-widget_form widget-rendered first-widget">
+			<div id="widget-13_search-2" class="widget">	<div class="widget-top">
+	<div class="widget-title-action">
+		<a class="widget-action hide-if-no-js" href="#available-widgets"></a>
+		<a class="widget-control-edit hide-if-js" href="http://localhost/karimunnews/wp-admin/customize.php?theme=writr&amp;editwidget=search-2&amp;key=-1">
+			<span class="edit">Edit</span>
+			<span class="add">Add</span>
+			<span class="screen-reader-text">Search</span>
+		</a>
+	</div><div class="widget-reorder-nav"><span class="move-widget" tabindex="0">Move to another area…</span><span class="move-widget-down" tabindex="0">Move down</span><span class="move-widget-up" tabindex="-1">Move up</span></div>
+	<div class="widget-title"><h4>Search<span class="in-widget-title"></span></h4></div>
+	</div><div class="move-widget-area">
+				<p class="description">Select an area to move this widget into:</p>
+				<ul class="widget-area-select">
+					
+						<li style="display: list-item;" class="" data-id="sidebar-1" title="" tabindex="0">Sidebar</li>
+					
+				</ul>
+				<div class="move-widget-actions">
+					<button class="move-widget-btn button-secondary" type="button">Move</button>
+				</div>
+			</div>
+
+	<div class="widget-inside">
+	<div class="form">
+	<div class="widget-content">
+		<p><label for="widget-search-2-title">Title: <input class="widefat" id="widget-search-2-title" name="widget-search[2][title]" type="text"></label></p>
+	</div>
+	<input name="widget-id" class="widget-id" value="search-2" type="hidden">
+	<input name="id_base" class="id_base" value="search" type="hidden">
+	<input name="widget-width" class="widget-width" value="250" type="hidden">
+	<input name="widget-height" class="widget-height" value="200" type="hidden">
+	<input name="widget_number" class="widget_number" value="2" type="hidden">
+	<input name="multi_number" class="multi_number" value="" type="hidden">
+	<input name="add_new" class="add_new" value="" type="hidden">
+
+	<div class="widget-control-actions">
+		<div class="alignleft">
+		<a title="Trash widget by moving it to the inactive widgets sidebar." class="widget-control-remove" href="#remove">Remove</a> |
+		<a class="widget-control-close" href="#close">Close</a>
+		</div>
+		<div class="alignright">
+			<input title="Save and preview changes before publishing them." name="savewidget" id="widget-search-2-savewidget" class="button widget-control-save right button-secondary" value="Apply" type="submit">			<span class="spinner"></span>
+		</div>
+		<br class="clear">
+	</div>
+	</div><!-- .form -->
+	</div>
+
+	<div class="widget-description">
+A search form for your site.
+	</div>
+</div>		</li><li id="customize-control-widget_recent-posts-2" class="customize-control customize-control-widget_form widget-rendered">
+			<div id="widget-14_recent-posts-2" class="widget">	<div class="widget-top">
+	<div class="widget-title-action">
+		<a class="widget-action hide-if-no-js" href="#available-widgets"></a>
+		<a class="widget-control-edit hide-if-js" href="http://localhost/karimunnews/wp-admin/customize.php?theme=writr&amp;editwidget=recent-posts-2&amp;key=-1">
+			<span class="edit">Edit</span>
+			<span class="add">Add</span>
+			<span class="screen-reader-text">Recent Posts</span>
+		</a>
+	</div><div class="widget-reorder-nav"><span class="move-widget" tabindex="0">Move to another area…</span><span class="move-widget-down" tabindex="0">Move down</span><span class="move-widget-up" tabindex="0">Move up</span></div>
+	<div class="widget-title"><h4>Recent Posts<span class="in-widget-title">: Berita Terbaru</span></h4></div>
+	</div><div class="move-widget-area">
+				<p class="description">Select an area to move this widget into:</p>
+				<ul class="widget-area-select">
+					
+						<li style="display: list-item;" class="" data-id="sidebar-1" title="" tabindex="0">Sidebar</li>
+					
+				</ul>
+				<div class="move-widget-actions">
+					<button class="move-widget-btn button-secondary" type="button">Move</button>
+				</div>
+			</div>
+
+	<div class="widget-inside">
+	<div class="form">
+	<div class="widget-content">
+		<p><label for="widget-recent-posts-2-title">Title:</label>
+		<input class="widefat" id="widget-recent-posts-2-title" name="widget-recent-posts[2][title]" value="Berita Terbaru" type="text"></p>
+
+		<p><label for="widget-recent-posts-2-number">Number of posts to show:</label>
+		<input id="widget-recent-posts-2-number" name="widget-recent-posts[2][number]" value="5" size="3" type="text"></p>
+
+		<p><input class="checkbox" checked="checked" id="widget-recent-posts-2-show_date" name="widget-recent-posts[2][show_date]" type="checkbox">
+		<label for="widget-recent-posts-2-show_date">Display post date?</label></p>
+	</div>
+	<input name="widget-id" class="widget-id" value="recent-posts-2" type="hidden">
+	<input name="id_base" class="id_base" value="recent-posts" type="hidden">
+	<input name="widget-width" class="widget-width" value="250" type="hidden">
+	<input name="widget-height" class="widget-height" value="200" type="hidden">
+	<input name="widget_number" class="widget_number" value="2" type="hidden">
+	<input name="multi_number" class="multi_number" value="" type="hidden">
+	<input name="add_new" class="add_new" value="" type="hidden">
+
+	<div class="widget-control-actions">
+		<div class="alignleft">
+		<a title="Trash widget by moving it to the inactive widgets sidebar." class="widget-control-remove" href="#remove">Remove</a> |
+		<a class="widget-control-close" href="#close">Close</a>
+		</div>
+		<div class="alignright">
+			<input title="Save and preview changes before publishing them." name="savewidget" id="widget-recent-posts-2-savewidget" class="button widget-control-save right button-secondary" value="Apply" type="submit">			<span class="spinner"></span>
+		</div>
+		<br class="clear">
+	</div>
+	</div><!-- .form -->
+	</div>
+
+	<div class="widget-description">
+Your site’s most recent Posts.
+	</div>
+</div>		</li><li id="customize-control-widget_categories-2" class="customize-control customize-control-widget_form widget-rendered">
+			<div id="widget-15_categories-2" class="widget">	<div class="widget-top">
+	<div class="widget-title-action">
+		<a class="widget-action hide-if-no-js" href="#available-widgets"></a>
+		<a class="widget-control-edit hide-if-js" href="http://localhost/karimunnews/wp-admin/customize.php?theme=writr&amp;editwidget=categories-2&amp;key=-1">
+			<span class="edit">Edit</span>
+			<span class="add">Add</span>
+			<span class="screen-reader-text">Categories</span>
+		</a>
+	</div><div class="widget-reorder-nav"><span class="move-widget" tabindex="0">Move to another area…</span><span class="move-widget-down" tabindex="0">Move down</span><span class="move-widget-up" tabindex="0">Move up</span></div>
+	<div class="widget-title"><h4>Categories<span class="in-widget-title">: Kategori</span></h4></div>
+	</div><div class="move-widget-area">
+				<p class="description">Select an area to move this widget into:</p>
+				<ul class="widget-area-select">
+					
+						<li style="display: list-item;" class="" data-id="sidebar-1" title="" tabindex="0">Sidebar</li>
+					
+				</ul>
+				<div class="move-widget-actions">
+					<button class="move-widget-btn button-secondary" type="button">Move</button>
+				</div>
+			</div>
+
+	<div class="widget-inside">
+	<div class="form">
+	<div class="widget-content">
+		<p><label for="widget-categories-2-title">Title:</label>
+		<input class="widefat" id="widget-categories-2-title" name="widget-categories[2][title]" value="Kategori" type="text"></p>
+
+		<p><input class="checkbox" id="widget-categories-2-dropdown" name="widget-categories[2][dropdown]" type="checkbox">
+		<label for="widget-categories-2-dropdown">Display as dropdown</label><br>
+
+		<input class="checkbox" id="widget-categories-2-count" name="widget-categories[2][count]" type="checkbox">
+		<label for="widget-categories-2-count">Show post counts</label><br>
+
+		<input class="checkbox" id="widget-categories-2-hierarchical" name="widget-categories[2][hierarchical]" type="checkbox">
+		<label for="widget-categories-2-hierarchical">Show hierarchy</label></p>
+	</div>
+	<input name="widget-id" class="widget-id" value="categories-2" type="hidden">
+	<input name="id_base" class="id_base" value="categories" type="hidden">
+	<input name="widget-width" class="widget-width" value="250" type="hidden">
+	<input name="widget-height" class="widget-height" value="200" type="hidden">
+	<input name="widget_number" class="widget_number" value="2" type="hidden">
+	<input name="multi_number" class="multi_number" value="" type="hidden">
+	<input name="add_new" class="add_new" value="" type="hidden">
+
+	<div class="widget-control-actions">
+		<div class="alignleft">
+		<a title="Trash widget by moving it to the inactive widgets sidebar." class="widget-control-remove" href="#remove">Remove</a> |
+		<a class="widget-control-close" href="#close">Close</a>
+		</div>
+		<div class="alignright">
+			<input title="Save and preview changes before publishing them." name="savewidget" id="widget-categories-2-savewidget" class="button widget-control-save right button-secondary" value="Apply" type="submit">			<span class="spinner"></span>
+		</div>
+		<br class="clear">
+	</div>
+	</div><!-- .form -->
+	</div>
+
+	<div class="widget-description">
+A list or dropdown of categories.
+	</div>
+</div>		</li><li id="customize-control-widget_text-3" style="" class="customize-control customize-control-widget_form last-widget expanded widget-rendered"><div id="widget-12_text-3" class="widget">	<div class="widget-top">
+	<div class="widget-title-action">
+		<a class="widget-action hide-if-no-js" href="#available-widgets"></a>
+		<a class="widget-control-edit hide-if-js" href="http://localhost/karimunnews/wp-admin/customize.php?theme=writr&amp;editwidget=text-1&amp;addnew=1&amp;num=2&amp;base=text">
+			<span class="edit">Edit</span>
+			<span class="add">Add</span>
+			<span class="screen-reader-text">Text</span>
+		</a>
+	</div><div class="widget-reorder-nav"><span class="move-widget" tabindex="0">Move to another area…</span><span class="move-widget-down" tabindex="-1">Move down</span><span class="move-widget-up" tabindex="0">Move up</span></div>
+	<div class="widget-title"><h4>Text<span class="in-widget-title"></span></h4></div>
+	</div><div class="move-widget-area">
+				<p class="description">Select an area to move this widget into:</p>
+				<ul class="widget-area-select">
+					
+						<li class="" data-id="sidebar-1" title="" tabindex="0">Sidebar</li>
+					
+				</ul>
+				<div class="move-widget-actions">
+					<button class="move-widget-btn button-secondary" type="button">Move</button>
+				</div>
+			</div>
+
+	<div style="display: block;" class="widget-inside">
+	<div class="form">
+	<div class="widget-content">
+		<p><label for="widget-text-3-title">Title:</label>
+		<input class="widefat" id="widget-text-3-title" name="widget-text[3][title]" type="text"></p>
+
+		<textarea class="widefat" rows="16" cols="20" id="widget-text-3-text" name="widget-text[3][text]">&lt;ul class="cat-item"&gt;
+&lt;li&gt;
+&lt;a href="/karimunnews/about-page/"&gt;Tentang Kami&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</textarea>
+
+		<p><input id="widget-text-3-filter" name="widget-text[3][filter]" type="checkbox">&nbsp;<label for="widget-text-3-filter">Automatically add paragraphs</label></p>
+	</div>
+	<input name="widget-id" class="widget-id" value="text-3" type="hidden">
+	<input name="id_base" class="id_base" value="text" type="hidden">
+	<input name="widget-width" class="widget-width" value="400" type="hidden">
+	<input name="widget-height" class="widget-height" value="350" type="hidden">
+	<input name="widget_number" class="widget_number" value="3" type="hidden">
+	<input name="multi_number" class="multi_number" value="3" type="hidden">
+	<input name="add_new" class="add_new" value="multi" type="hidden">
+
+	<div class="widget-control-actions">
+		<div class="alignleft">
+		<a class="widget-control-remove" href="#remove">Delete</a> |
+		<a class="widget-control-close" href="#close">Close</a>
+		</div>
+		<div class="alignright">
+			<input title="Save and preview changes before publishing them." name="savewidget" id="widget-text-3-savewidget" class="button widget-control-save right button-secondary" value="Apply" type="submit">			<span class="spinner"></span>
+		</div>
+		<br class="clear">
+	</div>
+	</div><!-- .form -->
+	</div>
+
+	<div class="widget-description">
+Arbitrary text or HTML.
+	</div>
+</div></li><li id="customize-control-sidebars_widgets-sidebar-1" class="customize-control customize-control-sidebar_widgets">
+					<span class="button-secondary add-new-widget" tabindex="0">
+			Add a Widget		</span>
+
+		<span class="reorder-toggle" tabindex="0">
+			<span class="reorder">Reorder</span>
+			<span class="reorder-done">Done</span>
+		</span>
+				</li>			</ul>
+		</li>
+					</ul></div>
+		</div>
+		</div>
+
+		<div id="customize-footer-actions" class="wp-full-overlay-footer">
+			<a href="#" class="collapse-sidebar button-secondary" title="Collapse Sidebar">
+				<span class="collapse-sidebar-arrow"></span>
+				<span class="collapse-sidebar-label">Collapse</span>
+			</a>
+		</div>
+	</form>
+	<div id="customize-preview" class="wp-full-overlay-main"><iframe></iframe></div>
+	
+<script type="text/javascript">
+/* <![CDATA[ */
+var _wpCustomizeControlsL10n = {"activate":"Save & Activate","save":"Save & Publish","saved":"Saved","cancel":"Cancel","close":"Close","cheatin":"Cheatin\u2019 uh?","allowedFiles":"Allowed Files"};var _wpUtilSettings = {"ajax":{"url":"\/karimunnews\/wp-admin\/admin-ajax.php"}};var _wpCustomizeWidgetsSettings = {"nonce":"bf94177adc","registeredSidebars":[{"name":"Sidebar","id":"sidebar-1","description":"","class":"","before_widget":"<aside id=\"%1$s\" class=\"widget %2$s\">","after_widget":"<\/aside>","before_title":"<h1 class=\"widget-title\">","after_title":"<\/h1>"}],"registeredWidgets":{"pages-1":{"name":"Pages","id":"pages-1","params":[{"number":1}],"classname":"widget_pages","description":"A list of your site&#8217;s Pages."},"calendar-1":{"name":"Calendar","id":"calendar-1","params":[{"number":1}],"classname":"widget_calendar","description":"A calendar of your site&#8217;s Posts."},"archives-2":{"name":"Archives","id":"archives-2","params":[{"number":2}],"classname":"widget_archive","description":"A monthly archive of your site&#8217;s Posts."},"meta-2":{"name":"Meta","id":"meta-2","params":[{"number":2}],"classname":"widget_meta","description":"Login, RSS, &amp; WordPress.org links."},"search-2":{"name":"Search","id":"search-2","params":[{"number":2}],"classname":"widget_search","description":"A search form for your site."},"text-1":{"name":"Text","id":"text-1","params":[{"number":1}],"classname":"widget_text","description":"Arbitrary text or HTML."},"categories-2":{"name":"Categories","id":"categories-2","params":[{"number":2}],"classname":"widget_categories","description":"A list or dropdown of categories."},"recent-posts-2":{"name":"Recent Posts","id":"recent-posts-2","params":[{"number":2}],"classname":"widget_recent_entries","description":"Your site&#8217;s most recent Posts."},"recent-comments-2":{"name":"Recent Comments","id":"recent-comments-2","params":[{"number":2}],"classname":"widget_recent_comments","description":"Your site&#8217;s most recent comments."},"rss-1":{"name":"RSS","id":"rss-1","params":[{"number":1}],"classname":"widget_rss","description":"Entries from any RSS or Atom feed."},"tag_cloud-1":{"name":"Tag Cloud","id":"tag_cloud-1","params":[{"number":1}],"classname":"widget_tag_cloud","description":"A cloud of your most used tags."},"nav_menu-1":{"name":"Custom Menu","id":"nav_menu-1","params":[{"number":1}],"classname":"widget_nav_menu","description":"Add a custom menu to your sidebar."}},"availableWidgets":[{"name":"Archives","id":"archives-2","params":[{"number":2}],"classname":"widget_archive","description":"A monthly archive of your site&#8217;s Posts.","temp_id":"archives-__i__","is_multi":true,"multi_number":3,"is_disabled":false,"id_base":"archives","transport":"refresh","width":250,"height":200,"is_wide":false},{"name":"Calendar","id":"calendar-1","params":[{"number":1}],"classname":"widget_calendar","description":"A calendar of your site&#8217;s Posts.","temp_id":"calendar-__i__","is_multi":true,"multi_number":2,"is_disabled":false,"id_base":"calendar","transport":"refresh","width":250,"height":200,"is_wide":false},{"name":"Categories","id":"categories-2","params":[{"number":2}],"classname":"widget_categories","description":"A list or dropdown of categories.","temp_id":"categories-__i__","is_multi":true,"multi_number":3,"is_disabled":false,"id_base":"categories","transport":"refresh","width":250,"height":200,"is_wide":false},{"name":"Custom Menu","id":"nav_menu-1","params":[{"number":1}],"classname":"widget_nav_menu","description":"Add a custom menu to your sidebar.","temp_id":"nav_menu-__i__","is_multi":true,"multi_number":2,"is_disabled":false,"id_base":"nav_menu","transport":"refresh","width":250,"height":200,"is_wide":false},{"name":"Meta","id":"meta-2","params":[{"number":2}],"classname":"widget_meta","description":"Login, RSS, &amp; WordPress.org links.","temp_id":"meta-__i__","is_multi":true,"multi_number":3,"is_disabled":false,"id_base":"meta","transport":"refresh","width":250,"height":200,"is_wide":false},{"name":"Pages","id":"pages-1","params":[{"number":1}],"classname":"widget_pages","description":"A list of your site&#8217;s Pages.","temp_id":"pages-__i__","is_multi":true,"multi_number":2,"is_disabled":false,"id_base":"pages","transport":"refresh","width":250,"height":200,"is_wide":false},{"name":"Recent Comments","id":"recent-comments-2","params":[{"number":2}],"classname":"widget_recent_comments","description":"Your site&#8217;s most recent comments.","temp_id":"recent-comments-__i__","is_multi":true,"multi_number":3,"is_disabled":false,"id_base":"recent-comments","transport":"refresh","width":250,"height":200,"is_wide":false},{"name":"Recent Posts","id":"recent-posts-2","params":[{"number":2}],"classname":"widget_recent_entries","description":"Your site&#8217;s most recent Posts.","temp_id":"recent-posts-__i__","is_multi":true,"multi_number":3,"is_disabled":false,"id_base":"recent-posts","transport":"refresh","width":250,"height":200,"is_wide":false},{"name":"RSS","id":"rss-1","params":[{"number":1}],"classname":"widget_rss","description":"Entries from any RSS or Atom feed.","temp_id":"rss-__i__","is_multi":true,"multi_number":2,"is_disabled":false,"id_base":"rss","transport":"refresh","width":400,"height":200,"is_wide":false},{"name":"Search","id":"search-2","params":[{"number":2}],"classname":"widget_search","description":"A search form for your site.","temp_id":"search-__i__","is_multi":true,"multi_number":3,"is_disabled":false,"id_base":"search","transport":"refresh","width":250,"height":200,"is_wide":false},{"name":"Tag Cloud","id":"tag_cloud-1","params":[{"number":1}],"classname":"widget_tag_cloud","description":"A cloud of your most used tags.","temp_id":"tag_cloud-__i__","is_multi":true,"multi_number":2,"is_disabled":false,"id_base":"tag_cloud","transport":"refresh","width":250,"height":200,"is_wide":false},{"name":"Text","id":"text-1","params":[{"number":1}],"classname":"widget_text","description":"Arbitrary text or HTML.","temp_id":"text-__i__","is_multi":true,"multi_number":2,"is_disabled":false,"id_base":"text","transport":"refresh","width":400,"height":350,"is_wide":false}],"l10n":{"saveBtnLabel":"Apply","saveBtnTooltip":"Save and preview changes before publishing them.","removeBtnLabel":"Remove","removeBtnTooltip":"Trash widget by moving it to the inactive widgets sidebar.","error":"An error has occurred. Please reload the page and try again."},"tpl":{"widgetReorderNav":"<div class=\"widget-reorder-nav\"><span class=\"move-widget\" tabindex=\"0\">Move to another area&hellip;<\/span><span class=\"move-widget-down\" tabindex=\"0\">Move down<\/span><span class=\"move-widget-up\" tabindex=\"0\">Move up<\/span><\/div>","moveWidgetArea":"<div class=\"move-widget-area\">\n\t\t\t\t<p class=\"description\">Select an area to move this widget into:<\/p>\n\t\t\t\t<ul class=\"widget-area-select\">\n\t\t\t\t\t<% _.each( sidebars, function ( sidebar ){ %>\n\t\t\t\t\t\t<li class=\"\" data-id=\"<%- sidebar.id %>\" title=\"<%- sidebar.description %>\" tabindex=\"0\"><%- sidebar.name %><\/li>\n\t\t\t\t\t<% }); %>\n\t\t\t\t<\/ul>\n\t\t\t\t<div class=\"move-widget-actions\">\n\t\t\t\t\t<button class=\"move-widget-btn button-secondary\" type=\"button\">Move<\/button>\n\t\t\t\t<\/div>\n\t\t\t<\/div>"}};var _wpMediaModelsL10n = {"settings":{"ajaxurl":"\/karimunnews\/wp-admin\/admin-ajax.php","post":{"id":0}}};var pluploadL10n = {"queue_limit_exceeded":"You have attempted to queue too many files.","file_exceeds_size_limit":"%s exceeds the maximum upload size for this site.","zero_byte_file":"This file is empty. Please try another.","invalid_filetype":"This file type is not allowed. Please try another.","not_an_image":"This file is not an image. Please try another.","image_memory_exceeded":"Memory exceeded. Please try another smaller file.","image_dimensions_exceeded":"This is larger than the maximum size. Please try another.","default_error":"An error occurred in the upload. Please try again later.","missing_upload_url":"There was a configuration error. Please contact the server administrator.","upload_limit_exceeded":"You may only upload 1 file.","http_error":"HTTP error.","upload_failed":"Upload failed.","big_upload_failed":"Please try uploading this file with the %1$sbrowser uploader%2$s.","big_upload_queued":"%s exceeds the maximum upload size for the multi-file uploader when used in your browser.","io_error":"IO error.","security_error":"Security error.","file_cancelled":"File canceled.","upload_stopped":"Upload stopped.","dismiss":"Dismiss","crunching":"Crunching\u2026","deleted":"moved to the trash.","error_uploading":"\u201c%s\u201d has failed to upload."};
+var _wpPluploadSettings = {"defaults":{"runtimes":"html5,flash,silverlight,html4","file_data_name":"async-upload","url":"\/karimunnews\/wp-admin\/async-upload.php","flash_swf_url":"http:\/\/localhost\/karimunnews\/wp-includes\/js\/plupload\/plupload.flash.swf","silverlight_xap_url":"http:\/\/localhost\/karimunnews\/wp-includes\/js\/plupload\/plupload.silverlight.xap","filters":{"max_file_size":"134217728b"},"multipart_params":{"action":"upload-attachment","_wpnonce":"2eab7b1df4"}},"browser":{"mobile":false,"supported":true},"limitExceeded":false};var mejsL10n = {"language":"en-US","strings":{"Close":"Close","Fullscreen":"Fullscreen","Download File":"Download File","Download Video":"Download Video","Play\/Pause":"Play\/Pause","Mute Toggle":"Mute Toggle","None":"None","Turn off Fullscreen":"Turn off Fullscreen","Go Fullscreen":"Go Fullscreen","Unmute":"Unmute","Mute":"Mute","Captions\/Subtitles":"Captions\/Subtitles"}};
+var _wpmejsSettings = {"pluginPath":"\/karimunnews\/wp-includes\/js\/mediaelement\/"};var _wpMediaViewsL10n = {"url":"URL","addMedia":"Add Media","search":"Search","select":"Select","cancel":"Cancel","update":"Update","replace":"Replace","remove":"Remove","back":"Back","selected":"%d selected","dragInfo":"Drag and drop to reorder images.","uploadFilesTitle":"Upload Files","uploadImagesTitle":"Upload Images","mediaLibraryTitle":"Media Library","insertMediaTitle":"Insert Media","createNewGallery":"Create a new gallery","createNewPlaylist":"Create a new playlist","createNewVideoPlaylist":"Create a new video playlist","returnToLibrary":"\u2190 Return to library","allMediaItems":"All media items","noItemsFound":"No items found.","insertIntoPost":"Insert into post","uploadedToThisPost":"Uploaded to this post","warnDelete":"You are about to permanently delete this item.\n  'Cancel' to stop, 'OK' to delete.","insertFromUrlTitle":"Insert from URL","setFeaturedImageTitle":"Set Featured Image","setFeaturedImage":"Set featured image","createGalleryTitle":"Create Gallery","editGalleryTitle":"Edit Gallery","cancelGalleryTitle":"\u2190 Cancel Gallery","insertGallery":"Insert gallery","updateGallery":"Update gallery","addToGallery":"Add to gallery","addToGalleryTitle":"Add to Gallery","reverseOrder":"Reverse order","imageDetailsTitle":"Image Details","imageReplaceTitle":"Replace Image","imageDetailsCancel":"Cancel Edit","editImage":"Edit Image","chooseImage":"Choose Image","selectAndCrop":"Select and Crop","skipCropping":"Skip Cropping","cropImage":"Crop Image","cropYourImage":"Crop your image","cropping":"Cropping\u2026","suggestedDimensions":"Suggested image dimensions:","cropError":"There has been an error cropping your image.","audioDetailsTitle":"Audio Details","audioReplaceTitle":"Replace Audio","audioAddSourceTitle":"Add Audio Source","audioDetailsCancel":"Cancel Edit","videoDetailsTitle":"Video Details","videoReplaceTitle":"Replace Video","videoAddSourceTitle":"Add Video Source","videoDetailsCancel":"Cancel Edit","videoSelectPosterImageTitle":"Select Poster Image","videoAddTrackTitle":"Add Subtitles","playlistDragInfo":"Drag and drop to reorder tracks.","createPlaylistTitle":"Create Audio Playlist","editPlaylistTitle":"Edit Audio Playlist","cancelPlaylistTitle":"\u2190 Cancel Audio Playlist","insertPlaylist":"Insert audio playlist","updatePlaylist":"Update audio playlist","addToPlaylist":"Add to audio playlist","addToPlaylistTitle":"Add to Audio Playlist","videoPlaylistDragInfo":"Drag and drop to reorder videos.","createVideoPlaylistTitle":"Create Video Playlist","editVideoPlaylistTitle":"Edit Video Playlist","cancelVideoPlaylistTitle":"\u2190 Cancel Video Playlist","insertVideoPlaylist":"Insert video playlist","updateVideoPlaylist":"Update video playlist","addToVideoPlaylist":"Add to video playlist","addToVideoPlaylistTitle":"Add to Video Playlist","settings":{"tabs":[],"tabUrl":"http:\/\/localhost\/karimunnews\/wp-admin\/media-upload.php?chromeless=1","mimeTypes":{"image":"Images","audio":"Audio","video":"Video"},"captions":true,"nonce":{"sendToEditor":"ab7583f081"},"post":{"id":0},"defaultProps":{"link":"file","align":"","size":""},"attachmentCounts":{"audio":0,"video":0},"embedExts":["mp3","ogg","wma","m4a","wav","mp4","m4v","webm","ogv","wmv","flv"],"embedMimes":{"mp3":"audio\/mpeg","ogg":"audio\/ogg","wma":"audio\/x-ms-wma","m4a":"audio\/mpeg","wav":"audio\/wav","mp4":"video\/mp4","m4v":"video\/mp4","webm":"video\/webm","ogv":"video\/ogg","wmv":"video\/x-ms-wmv","flv":"video\/x-flv"},"contentWidth":460}};var imageEditL10n = {"error":"Could not load the preview image. Please reload the page and try again."};var _wpCustomizeHeader = {"data":{"width":120,"height":120,"flex-width":1,"flex-height":1,"currentImgSrc":false},"nonces":{"add":"312e1b2262","remove":"7619d17dca"},"uploads":[],"defaults":null};var wpColorPickerL10n = {"clear":"Clear","defaultString":"Default","pick":"Select Color","current":"Current Color"};/* ]]> */
+</script>
+<script type="text/javascript" src="customize_data/load-scripts.js"></script>
+		<div id="widgets-left"><!-- compatibility with JS which looks for widget templates here -->
+		<div id="available-widgets">
+			<div id="available-widgets-filter">
+				<label class="screen-reader-text" for="widgets-search">Search Widgets</label>
+				<input id="widgets-search" placeholder="Search widgets…" type="search">
+			</div>
+							<div style="display: block;" id="widget-tpl-archives-2" data-widget-id="archives-2" class="widget-tpl archives-2" tabindex="0">
+					<div id="widget-1_archives-__i__" class="widget">	<div class="widget-top">
+	<div class="widget-title-action">
+		<a class="widget-action hide-if-no-js" href="#available-widgets"></a>
+		<a class="widget-control-edit hide-if-js" href="http://localhost/karimunnews/wp-admin/customize.php?theme=writr&amp;editwidget=archives-2&amp;addnew=1&amp;num=3&amp;base=archives">
+			<span class="edit">Edit</span>
+			<span class="add">Add</span>
+			<span class="screen-reader-text">Archives</span>
+		</a>
+	</div>
+	<div class="widget-title"><h4>Archives<span class="in-widget-title"></span></h4></div>
+	</div>
+
+	<div class="widget-inside">
+	<div class="form">
+	<div class="widget-content">
+		<p><label for="widget-archives-__i__-title">Title:</label> <input class="widefat" id="widget-archives-__i__-title" name="widget-archives[__i__][title]" type="text"></p>
+		<p>
+			<input class="checkbox" id="widget-archives-__i__-dropdown" name="widget-archives[__i__][dropdown]" type="checkbox"> <label for="widget-archives-__i__-dropdown">Display as dropdown</label>
+			<br>
+			<input class="checkbox" id="widget-archives-__i__-count" name="widget-archives[__i__][count]" type="checkbox"> <label for="widget-archives-__i__-count">Show post counts</label>
+		</p>
+	</div>
+	<input name="widget-id" class="widget-id" value="archives-__i__" type="hidden">
+	<input name="id_base" class="id_base" value="archives" type="hidden">
+	<input name="widget-width" class="widget-width" value="250" type="hidden">
+	<input name="widget-height" class="widget-height" value="200" type="hidden">
+	<input name="widget_number" class="widget_number" value="2" type="hidden">
+	<input name="multi_number" class="multi_number" value="3" type="hidden">
+	<input name="add_new" class="add_new" value="multi" type="hidden">
+
+	<div class="widget-control-actions">
+		<div class="alignleft">
+		<a class="widget-control-remove" href="#remove">Delete</a> |
+		<a class="widget-control-close" href="#close">Close</a>
+		</div>
+		<div class="alignright">
+			<input name="savewidget" id="widget-archives-__i__-savewidget" class="button button-primary widget-control-save right" value="Save" type="submit">			<span class="spinner"></span>
+		</div>
+		<br class="clear">
+	</div>
+	</div><!-- .form -->
+	</div>
+
+	<div class="widget-description">
+A monthly archive of your site’s Posts.
+	</div>
+</div>				</div>
+							<div style="display: block;" id="widget-tpl-calendar-1" data-widget-id="calendar-1" class="widget-tpl calendar-1" tabindex="0">
+					<div id="widget-2_calendar-__i__" class="widget">	<div class="widget-top">
+	<div class="widget-title-action">
+		<a class="widget-action hide-if-no-js" href="#available-widgets"></a>
+		<a class="widget-control-edit hide-if-js" href="http://localhost/karimunnews/wp-admin/customize.php?theme=writr&amp;editwidget=calendar-1&amp;addnew=1&amp;num=2&amp;base=calendar">
+			<span class="edit">Edit</span>
+			<span class="add">Add</span>
+			<span class="screen-reader-text">Calendar</span>
+		</a>
+	</div>
+	<div class="widget-title"><h4>Calendar<span class="in-widget-title"></span></h4></div>
+	</div>
+
+	<div class="widget-inside">
+	<div class="form">
+	<div class="widget-content">
+		<p><label for="widget-calendar-__i__-title">Title:</label>
+		<input class="widefat" id="widget-calendar-__i__-title" name="widget-calendar[__i__][title]" type="text"></p>
+	</div>
+	<input name="widget-id" class="widget-id" value="calendar-__i__" type="hidden">
+	<input name="id_base" class="id_base" value="calendar" type="hidden">
+	<input name="widget-width" class="widget-width" value="250" type="hidden">
+	<input name="widget-height" class="widget-height" value="200" type="hidden">
+	<input name="widget_number" class="widget_number" value="1" type="hidden">
+	<input name="multi_number" class="multi_number" value="2" type="hidden">
+	<input name="add_new" class="add_new" value="multi" type="hidden">
+
+	<div class="widget-control-actions">
+		<div class="alignleft">
+		<a class="widget-control-remove" href="#remove">Delete</a> |
+		<a class="widget-control-close" href="#close">Close</a>
+		</div>
+		<div class="alignright">
+			<input name="savewidget" id="widget-calendar-__i__-savewidget" class="button button-primary widget-control-save right" value="Save" type="submit">			<span class="spinner"></span>
+		</div>
+		<br class="clear">
+	</div>
+	</div><!-- .form -->
+	</div>
+
+	<div class="widget-description">
+A calendar of your site’s Posts.
+	</div>
+</div>				</div>
+							<div style="display: block;" id="widget-tpl-categories-2" data-widget-id="categories-2" class="widget-tpl categories-2" tabindex="0">
+					<div id="widget-3_categories-__i__" class="widget">	<div class="widget-top">
+	<div class="widget-title-action">
+		<a class="widget-action hide-if-no-js" href="#available-widgets"></a>
+		<a class="widget-control-edit hide-if-js" href="http://localhost/karimunnews/wp-admin/customize.php?theme=writr&amp;editwidget=categories-2&amp;addnew=1&amp;num=3&amp;base=categories">
+			<span class="edit">Edit</span>
+			<span class="add">Add</span>
+			<span class="screen-reader-text">Categories</span>
+		</a>
+	</div>
+	<div class="widget-title"><h4>Categories<span class="in-widget-title"></span></h4></div>
+	</div>
+
+	<div class="widget-inside">
+	<div class="form">
+	<div class="widget-content">
+		<p><label for="widget-categories-__i__-title">Title:</label>
+		<input class="widefat" id="widget-categories-__i__-title" name="widget-categories[__i__][title]" type="text"></p>
+
+		<p><input class="checkbox" id="widget-categories-__i__-dropdown" name="widget-categories[__i__][dropdown]" type="checkbox">
+		<label for="widget-categories-__i__-dropdown">Display as dropdown</label><br>
+
+		<input class="checkbox" id="widget-categories-__i__-count" name="widget-categories[__i__][count]" type="checkbox">
+		<label for="widget-categories-__i__-count">Show post counts</label><br>
+
+		<input class="checkbox" id="widget-categories-__i__-hierarchical" name="widget-categories[__i__][hierarchical]" type="checkbox">
+		<label for="widget-categories-__i__-hierarchical">Show hierarchy</label></p>
+	</div>
+	<input name="widget-id" class="widget-id" value="categories-__i__" type="hidden">
+	<input name="id_base" class="id_base" value="categories" type="hidden">
+	<input name="widget-width" class="widget-width" value="250" type="hidden">
+	<input name="widget-height" class="widget-height" value="200" type="hidden">
+	<input name="widget_number" class="widget_number" value="2" type="hidden">
+	<input name="multi_number" class="multi_number" value="3" type="hidden">
+	<input name="add_new" class="add_new" value="multi" type="hidden">
+
+	<div class="widget-control-actions">
+		<div class="alignleft">
+		<a class="widget-control-remove" href="#remove">Delete</a> |
+		<a class="widget-control-close" href="#close">Close</a>
+		</div>
+		<div class="alignright">
+			<input name="savewidget" id="widget-categories-__i__-savewidget" class="button button-primary widget-control-save right" value="Save" type="submit">			<span class="spinner"></span>
+		</div>
+		<br class="clear">
+	</div>
+	</div><!-- .form -->
+	</div>
+
+	<div class="widget-description">
+A list or dropdown of categories.
+	</div>
+</div>				</div>
+							<div style="display: block;" id="widget-tpl-nav_menu-1" data-widget-id="nav_menu-1" class="widget-tpl nav_menu-1" tabindex="0">
+					<div id="widget-4_nav_menu-__i__" class="widget">	<div class="widget-top">
+	<div class="widget-title-action">
+		<a class="widget-action hide-if-no-js" href="#available-widgets"></a>
+		<a class="widget-control-edit hide-if-js" href="http://localhost/karimunnews/wp-admin/customize.php?theme=writr&amp;editwidget=nav_menu-1&amp;addnew=1&amp;num=2&amp;base=nav_menu">
+			<span class="edit">Edit</span>
+			<span class="add">Add</span>
+			<span class="screen-reader-text">Custom Menu</span>
+		</a>
+	</div>
+	<div class="widget-title"><h4>Custom Menu<span class="in-widget-title"></span></h4></div>
+	</div>
+
+	<div class="widget-inside">
+	<div class="form">
+	<div class="widget-content">
+<p>No menus have been created yet. <a href="http://localhost/karimunnews/wp-admin/nav-menus.php">Create some</a>.</p>	</div>
+	<input name="widget-id" class="widget-id" value="nav_menu-__i__" type="hidden">
+	<input name="id_base" class="id_base" value="nav_menu" type="hidden">
+	<input name="widget-width" class="widget-width" value="250" type="hidden">
+	<input name="widget-height" class="widget-height" value="200" type="hidden">
+	<input name="widget_number" class="widget_number" value="1" type="hidden">
+	<input name="multi_number" class="multi_number" value="2" type="hidden">
+	<input name="add_new" class="add_new" value="multi" type="hidden">
+
+	<div class="widget-control-actions">
+		<div class="alignleft">
+		<a class="widget-control-remove" href="#remove">Delete</a> |
+		<a class="widget-control-close" href="#close">Close</a>
+		</div>
+		<div class="alignright">
+			<input name="savewidget" id="widget-nav_menu-__i__-savewidget" class="button button-primary widget-control-save right" value="Save" type="submit">			<span class="spinner"></span>
+		</div>
+		<br class="clear">
+	</div>
+	</div><!-- .form -->
+	</div>
+
+	<div class="widget-description">
+Add a custom menu to your sidebar.
+	</div>
+</div>				</div>
+							<div style="display: block;" id="widget-tpl-meta-2" data-widget-id="meta-2" class="widget-tpl meta-2" tabindex="0">
+					<div id="widget-5_meta-__i__" class="widget">	<div class="widget-top">
+	<div class="widget-title-action">
+		<a class="widget-action hide-if-no-js" href="#available-widgets"></a>
+		<a class="widget-control-edit hide-if-js" href="http://localhost/karimunnews/wp-admin/customize.php?theme=writr&amp;editwidget=meta-2&amp;addnew=1&amp;num=3&amp;base=meta">
+			<span class="edit">Edit</span>
+			<span class="add">Add</span>
+			<span class="screen-reader-text">Meta</span>
+		</a>
+	</div>
+	<div class="widget-title"><h4>Meta<span class="in-widget-title"></span></h4></div>
+	</div>
+
+	<div class="widget-inside">
+	<div class="form">
+	<div class="widget-content">
+			<p><label for="widget-meta-__i__-title">Title:</label> <input class="widefat" id="widget-meta-__i__-title" name="widget-meta[__i__][title]" type="text"></p>
+	</div>
+	<input name="widget-id" class="widget-id" value="meta-__i__" type="hidden">
+	<input name="id_base" class="id_base" value="meta" type="hidden">
+	<input name="widget-width" class="widget-width" value="250" type="hidden">
+	<input name="widget-height" class="widget-height" value="200" type="hidden">
+	<input name="widget_number" class="widget_number" value="2" type="hidden">
+	<input name="multi_number" class="multi_number" value="3" type="hidden">
+	<input name="add_new" class="add_new" value="multi" type="hidden">
+
+	<div class="widget-control-actions">
+		<div class="alignleft">
+		<a class="widget-control-remove" href="#remove">Delete</a> |
+		<a class="widget-control-close" href="#close">Close</a>
+		</div>
+		<div class="alignright">
+			<input name="savewidget" id="widget-meta-__i__-savewidget" class="button button-primary widget-control-save right" value="Save" type="submit">			<span class="spinner"></span>
+		</div>
+		<br class="clear">
+	</div>
+	</div><!-- .form -->
+	</div>
+
+	<div class="widget-description">
+Login, RSS, &amp; WordPress.org links.
+	</div>
+</div>				</div>
+							<div style="display: block;" id="widget-tpl-pages-1" data-widget-id="pages-1" class="widget-tpl pages-1" tabindex="0">
+					<div id="widget-6_pages-__i__" class="widget">	<div class="widget-top">
+	<div class="widget-title-action">
+		<a class="widget-action hide-if-no-js" href="#available-widgets"></a>
+		<a class="widget-control-edit hide-if-js" href="http://localhost/karimunnews/wp-admin/customize.php?theme=writr&amp;editwidget=pages-1&amp;addnew=1&amp;num=2&amp;base=pages">
+			<span class="edit">Edit</span>
+			<span class="add">Add</span>
+			<span class="screen-reader-text">Pages</span>
+		</a>
+	</div>
+	<div class="widget-title"><h4>Pages<span class="in-widget-title"></span></h4></div>
+	</div>
+
+	<div class="widget-inside">
+	<div class="form">
+	<div class="widget-content">
+		<p><label for="widget-pages-__i__-title">Title:</label> <input class="widefat" id="widget-pages-__i__-title" name="widget-pages[__i__][title]" type="text"></p>
+		<p>
+			<label for="widget-pages-__i__-sortby">Sort by:</label>
+			<select name="widget-pages[__i__][sortby]" id="widget-pages-__i__-sortby" class="widefat">
+				<option value="post_title" selected="selected">Page title</option>
+				<option value="menu_order">Page order</option>
+				<option value="ID">Page ID</option>
+			</select>
+		</p>
+		<p>
+			<label for="widget-pages-__i__-exclude">Exclude:</label> <input name="widget-pages[__i__][exclude]" id="widget-pages-__i__-exclude" class="widefat" type="text">
+			<br>
+			<small>Page IDs, separated by commas.</small>
+		</p>
+	</div>
+	<input name="widget-id" class="widget-id" value="pages-__i__" type="hidden">
+	<input name="id_base" class="id_base" value="pages" type="hidden">
+	<input name="widget-width" class="widget-width" value="250" type="hidden">
+	<input name="widget-height" class="widget-height" value="200" type="hidden">
+	<input name="widget_number" class="widget_number" value="1" type="hidden">
+	<input name="multi_number" class="multi_number" value="2" type="hidden">
+	<input name="add_new" class="add_new" value="multi" type="hidden">
+
+	<div class="widget-control-actions">
+		<div class="alignleft">
+		<a class="widget-control-remove" href="#remove">Delete</a> |
+		<a class="widget-control-close" href="#close">Close</a>
+		</div>
+		<div class="alignright">
+			<input name="savewidget" id="widget-pages-__i__-savewidget" class="button button-primary widget-control-save right" value="Save" type="submit">			<span class="spinner"></span>
+		</div>
+		<br class="clear">
+	</div>
+	</div><!-- .form -->
+	</div>
+
+	<div class="widget-description">
+A list of your site’s Pages.
+	</div>
+</div>				</div>
+							<div style="display: block;" id="widget-tpl-recent-comments-2" data-widget-id="recent-comments-2" class="widget-tpl recent-comments-2" tabindex="0">
+					<div id="widget-7_recent-comments-__i__" class="widget">	<div class="widget-top">
+	<div class="widget-title-action">
+		<a class="widget-action hide-if-no-js" href="#available-widgets"></a>
+		<a class="widget-control-edit hide-if-js" href="http://localhost/karimunnews/wp-admin/customize.php?theme=writr&amp;editwidget=recent-comments-2&amp;addnew=1&amp;num=3&amp;base=recent-comments">
+			<span class="edit">Edit</span>
+			<span class="add">Add</span>
+			<span class="screen-reader-text">Recent Comments</span>
+		</a>
+	</div>
+	<div class="widget-title"><h4>Recent Comments<span class="in-widget-title"></span></h4></div>
+	</div>
+
+	<div class="widget-inside">
+	<div class="form">
+	<div class="widget-content">
+		<p><label for="widget-recent-comments-__i__-title">Title:</label>
+		<input class="widefat" id="widget-recent-comments-__i__-title" name="widget-recent-comments[__i__][title]" type="text"></p>
+
+		<p><label for="widget-recent-comments-__i__-number">Number of comments to show:</label>
+		<input id="widget-recent-comments-__i__-number" name="widget-recent-comments[__i__][number]" value="5" size="3" type="text"></p>
+	</div>
+	<input name="widget-id" class="widget-id" value="recent-comments-__i__" type="hidden">
+	<input name="id_base" class="id_base" value="recent-comments" type="hidden">
+	<input name="widget-width" class="widget-width" value="250" type="hidden">
+	<input name="widget-height" class="widget-height" value="200" type="hidden">
+	<input name="widget_number" class="widget_number" value="2" type="hidden">
+	<input name="multi_number" class="multi_number" value="3" type="hidden">
+	<input name="add_new" class="add_new" value="multi" type="hidden">
+
+	<div class="widget-control-actions">
+		<div class="alignleft">
+		<a class="widget-control-remove" href="#remove">Delete</a> |
+		<a class="widget-control-close" href="#close">Close</a>
+		</div>
+		<div class="alignright">
+			<input name="savewidget" id="widget-recent-comments-__i__-savewidget" class="button button-primary widget-control-save right" value="Save" type="submit">			<span class="spinner"></span>
+		</div>
+		<br class="clear">
+	</div>
+	</div><!-- .form -->
+	</div>
+
+	<div class="widget-description">
+Your site’s most recent comments.
+	</div>
+</div>				</div>
+							<div style="display: block;" id="widget-tpl-recent-posts-2" data-widget-id="recent-posts-2" class="widget-tpl recent-posts-2" tabindex="0">
+					<div id="widget-8_recent-posts-__i__" class="widget">	<div class="widget-top">
+	<div class="widget-title-action">
+		<a class="widget-action hide-if-no-js" href="#available-widgets"></a>
+		<a class="widget-control-edit hide-if-js" href="http://localhost/karimunnews/wp-admin/customize.php?theme=writr&amp;editwidget=recent-posts-2&amp;addnew=1&amp;num=3&amp;base=recent-posts">
+			<span class="edit">Edit</span>
+			<span class="add">Add</span>
+			<span class="screen-reader-text">Recent Posts</span>
+		</a>
+	</div>
+	<div class="widget-title"><h4>Recent Posts<span class="in-widget-title"></span></h4></div>
+	</div>
+
+	<div class="widget-inside">
+	<div class="form">
+	<div class="widget-content">
+		<p><label for="widget-recent-posts-__i__-title">Title:</label>
+		<input class="widefat" id="widget-recent-posts-__i__-title" name="widget-recent-posts[__i__][title]" type="text"></p>
+
+		<p><label for="widget-recent-posts-__i__-number">Number of posts to show:</label>
+		<input id="widget-recent-posts-__i__-number" name="widget-recent-posts[__i__][number]" value="5" size="3" type="text"></p>
+
+		<p><input class="checkbox" id="widget-recent-posts-__i__-show_date" name="widget-recent-posts[__i__][show_date]" type="checkbox">
+		<label for="widget-recent-posts-__i__-show_date">Display post date?</label></p>
+	</div>
+	<input name="widget-id" class="widget-id" value="recent-posts-__i__" type="hidden">
+	<input name="id_base" class="id_base" value="recent-posts" type="hidden">
+	<input name="widget-width" class="widget-width" value="250" type="hidden">
+	<input name="widget-height" class="widget-height" value="200" type="hidden">
+	<input name="widget_number" class="widget_number" value="2" type="hidden">
+	<input name="multi_number" class="multi_number" value="3" type="hidden">
+	<input name="add_new" class="add_new" value="multi" type="hidden">
+
+	<div class="widget-control-actions">
+		<div class="alignleft">
+		<a class="widget-control-remove" href="#remove">Delete</a> |
+		<a class="widget-control-close" href="#close">Close</a>
+		</div>
+		<div class="alignright">
+			<input name="savewidget" id="widget-recent-posts-__i__-savewidget" class="button button-primary widget-control-save right" value="Save" type="submit">			<span class="spinner"></span>
+		</div>
+		<br class="clear">
+	</div>
+	</div><!-- .form -->
+	</div>
+
+	<div class="widget-description">
+Your site’s most recent Posts.
+	</div>
+</div>				</div>
+							<div style="display: block;" id="widget-tpl-rss-1" data-widget-id="rss-1" class="widget-tpl rss-1" tabindex="0">
+					<div id="widget-9_rss-__i__" class="widget">	<div class="widget-top">
+	<div class="widget-title-action">
+		<a class="widget-action hide-if-no-js" href="#available-widgets"></a>
+		<a class="widget-control-edit hide-if-js" href="http://localhost/karimunnews/wp-admin/customize.php?theme=writr&amp;editwidget=rss-1&amp;addnew=1&amp;num=2&amp;base=rss">
+			<span class="edit">Edit</span>
+			<span class="add">Add</span>
+			<span class="screen-reader-text">RSS</span>
+		</a>
+	</div>
+	<div class="widget-title"><h4>RSS<span class="in-widget-title"></span></h4></div>
+	</div>
+
+	<div class="widget-inside">
+	<div class="form">
+	<div class="widget-content">
+	<p><label for="rss-url-__i__">Enter the RSS feed URL here:</label>
+	<input class="widefat" id="rss-url-__i__" name="widget-rss[__i__][url]" type="text"></p>
+	<p><label for="rss-title-__i__">Give the feed a title (optional):</label>
+	<input class="widefat" id="rss-title-__i__" name="widget-rss[__i__][title]" type="text"></p>
+	<p><label for="rss-items-__i__">How many items would you like to display?</label>
+	<select id="rss-items-__i__" name="widget-rss[__i__][items]">
+<option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10" selected="selected">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option>	</select></p>
+	<p><input id="rss-show-summary-__i__" name="widget-rss[__i__][show_summary]" value="1" type="checkbox">
+	<label for="rss-show-summary-__i__">Display item content?</label></p>
+	<p><input id="rss-show-author-__i__" name="widget-rss[__i__][show_author]" value="1" type="checkbox">
+	<label for="rss-show-author-__i__">Display item author if available?</label></p>
+	<p><input id="rss-show-date-__i__" name="widget-rss[__i__][show_date]" value="1" type="checkbox">
+	<label for="rss-show-date-__i__">Display item date?</label></p>
+	</div>
+	<input name="widget-id" class="widget-id" value="rss-__i__" type="hidden">
+	<input name="id_base" class="id_base" value="rss" type="hidden">
+	<input name="widget-width" class="widget-width" value="400" type="hidden">
+	<input name="widget-height" class="widget-height" value="200" type="hidden">
+	<input name="widget_number" class="widget_number" value="1" type="hidden">
+	<input name="multi_number" class="multi_number" value="2" type="hidden">
+	<input name="add_new" class="add_new" value="multi" type="hidden">
+
+	<div class="widget-control-actions">
+		<div class="alignleft">
+		<a class="widget-control-remove" href="#remove">Delete</a> |
+		<a class="widget-control-close" href="#close">Close</a>
+		</div>
+		<div class="alignright">
+			<input name="savewidget" id="widget-rss-__i__-savewidget" class="button button-primary widget-control-save right" value="Save" type="submit">			<span class="spinner"></span>
+		</div>
+		<br class="clear">
+	</div>
+	</div><!-- .form -->
+	</div>
+
+	<div class="widget-description">
+Entries from any RSS or Atom feed.
+	</div>
+</div>				</div>
+							<div style="display: block;" id="widget-tpl-search-2" data-widget-id="search-2" class="widget-tpl search-2" tabindex="0">
+					<div id="widget-10_search-__i__" class="widget">	<div class="widget-top">
+	<div class="widget-title-action">
+		<a class="widget-action hide-if-no-js" href="#available-widgets"></a>
+		<a class="widget-control-edit hide-if-js" href="http://localhost/karimunnews/wp-admin/customize.php?theme=writr&amp;editwidget=search-2&amp;addnew=1&amp;num=3&amp;base=search">
+			<span class="edit">Edit</span>
+			<span class="add">Add</span>
+			<span class="screen-reader-text">Search</span>
+		</a>
+	</div>
+	<div class="widget-title"><h4>Search<span class="in-widget-title"></span></h4></div>
+	</div>
+
+	<div class="widget-inside">
+	<div class="form">
+	<div class="widget-content">
+		<p><label for="widget-search-__i__-title">Title: <input class="widefat" id="widget-search-__i__-title" name="widget-search[__i__][title]" type="text"></label></p>
+	</div>
+	<input name="widget-id" class="widget-id" value="search-__i__" type="hidden">
+	<input name="id_base" class="id_base" value="search" type="hidden">
+	<input name="widget-width" class="widget-width" value="250" type="hidden">
+	<input name="widget-height" class="widget-height" value="200" type="hidden">
+	<input name="widget_number" class="widget_number" value="2" type="hidden">
+	<input name="multi_number" class="multi_number" value="3" type="hidden">
+	<input name="add_new" class="add_new" value="multi" type="hidden">
+
+	<div class="widget-control-actions">
+		<div class="alignleft">
+		<a class="widget-control-remove" href="#remove">Delete</a> |
+		<a class="widget-control-close" href="#close">Close</a>
+		</div>
+		<div class="alignright">
+			<input name="savewidget" id="widget-search-__i__-savewidget" class="button button-primary widget-control-save right" value="Save" type="submit">			<span class="spinner"></span>
+		</div>
+		<br class="clear">
+	</div>
+	</div><!-- .form -->
+	</div>
+
+	<div class="widget-description">
+A search form for your site.
+	</div>
+</div>				</div>
+							<div style="display: block;" id="widget-tpl-tag_cloud-1" data-widget-id="tag_cloud-1" class="widget-tpl tag_cloud-1" tabindex="0">
+					<div id="widget-11_tag_cloud-__i__" class="widget">	<div class="widget-top">
+	<div class="widget-title-action">
+		<a class="widget-action hide-if-no-js" href="#available-widgets"></a>
+		<a class="widget-control-edit hide-if-js" href="http://localhost/karimunnews/wp-admin/customize.php?theme=writr&amp;editwidget=tag_cloud-1&amp;addnew=1&amp;num=2&amp;base=tag_cloud">
+			<span class="edit">Edit</span>
+			<span class="add">Add</span>
+			<span class="screen-reader-text">Tag Cloud</span>
+		</a>
+	</div>
+	<div class="widget-title"><h4>Tag Cloud<span class="in-widget-title"></span></h4></div>
+	</div>
+
+	<div class="widget-inside">
+	<div class="form">
+	<div class="widget-content">
+	<p><label for="widget-tag_cloud-__i__-title">Title:</label>
+	<input class="widefat" id="widget-tag_cloud-__i__-title" name="widget-tag_cloud[__i__][title]" type="text"></p>
+	<p><label for="widget-tag_cloud-__i__-taxonomy">Taxonomy:</label>
+	<select class="widefat" id="widget-tag_cloud-__i__-taxonomy" name="widget-tag_cloud[__i__][taxonomy]">
+			<option value="category">Categories</option>
+			<option value="post_tag" selected="selected">Tags</option>
+		</select></p>	</div>
+	<input name="widget-id" class="widget-id" value="tag_cloud-__i__" type="hidden">
+	<input name="id_base" class="id_base" value="tag_cloud" type="hidden">
+	<input name="widget-width" class="widget-width" value="250" type="hidden">
+	<input name="widget-height" class="widget-height" value="200" type="hidden">
+	<input name="widget_number" class="widget_number" value="1" type="hidden">
+	<input name="multi_number" class="multi_number" value="2" type="hidden">
+	<input name="add_new" class="add_new" value="multi" type="hidden">
+
+	<div class="widget-control-actions">
+		<div class="alignleft">
+		<a class="widget-control-remove" href="#remove">Delete</a> |
+		<a class="widget-control-close" href="#close">Close</a>
+		</div>
+		<div class="alignright">
+			<input name="savewidget" id="widget-tag_cloud-__i__-savewidget" class="button button-primary widget-control-save right" value="Save" type="submit">			<span class="spinner"></span>
+		</div>
+		<br class="clear">
+	</div>
+	</div><!-- .form -->
+	</div>
+
+	<div class="widget-description">
+A cloud of your most used tags.
+	</div>
+</div>				</div>
+							<div style="display: block;" id="widget-tpl-text-1" data-widget-id="text-1" class="widget-tpl text-1 selected" tabindex="0">
+					<div id="widget-12_text-__i__" class="widget">	<div class="widget-top">
+	<div class="widget-title-action">
+		<a class="widget-action hide-if-no-js" href="#available-widgets"></a>
+		<a class="widget-control-edit hide-if-js" href="http://localhost/karimunnews/wp-admin/customize.php?theme=writr&amp;editwidget=text-1&amp;addnew=1&amp;num=2&amp;base=text">
+			<span class="edit">Edit</span>
+			<span class="add">Add</span>
+			<span class="screen-reader-text">Text</span>
+		</a>
+	</div>
+	<div class="widget-title"><h4>Text<span class="in-widget-title"></span></h4></div>
+	</div>
+
+	<div class="widget-inside">
+	<div class="form">
+	<div class="widget-content">
+		<p><label for="widget-text-__i__-title">Title:</label>
+		<input class="widefat" id="widget-text-__i__-title" name="widget-text[__i__][title]" type="text"></p>
+
+		<textarea class="widefat" rows="16" cols="20" id="widget-text-__i__-text" name="widget-text[__i__][text]"></textarea>
+
+		<p><input id="widget-text-__i__-filter" name="widget-text[__i__][filter]" type="checkbox">&nbsp;<label for="widget-text-__i__-filter">Automatically add paragraphs</label></p>
+	</div>
+	<input name="widget-id" class="widget-id" value="text-__i__" type="hidden">
+	<input name="id_base" class="id_base" value="text" type="hidden">
+	<input name="widget-width" class="widget-width" value="400" type="hidden">
+	<input name="widget-height" class="widget-height" value="350" type="hidden">
+	<input name="widget_number" class="widget_number" value="1" type="hidden">
+	<input name="multi_number" class="multi_number" value="2" type="hidden">
+	<input name="add_new" class="add_new" value="multi" type="hidden">
+
+	<div class="widget-control-actions">
+		<div class="alignleft">
+		<a class="widget-control-remove" href="#remove">Delete</a> |
+		<a class="widget-control-close" href="#close">Close</a>
+		</div>
+		<div class="alignright">
+			<input name="savewidget" id="widget-text-__i__-savewidget" class="button button-primary widget-control-save right" value="Save" type="submit">			<span class="spinner"></span>
+		</div>
+		<br class="clear">
+	</div>
+	</div><!-- .form -->
+	</div>
+
+	<div class="widget-description">
+Arbitrary text or HTML.
+	</div>
+</div>				</div>
+					</div><!-- #available-widgets -->
+		</div><!-- #widgets-left -->
+			<script type="text/html" id="tmpl-media-frame">
+		<div class="media-frame-menu"></div>
+		<div class="media-frame-title"></div>
+		<div class="media-frame-router"></div>
+		<div class="media-frame-content"></div>
+		<div class="media-frame-toolbar"></div>
+		<div class="media-frame-uploader"></div>
+	</script>
+
+	<script type="text/html" id="tmpl-media-modal">
+		<div class="media-modal wp-core-ui">
+			<a class="media-modal-close" href="#" title="Close"><span class="media-modal-icon"></span></a>
+			<div class="media-modal-content"></div>
+		</div>
+		<div class="media-modal-backdrop"></div>
+	</script>
+
+	<script type="text/html" id="tmpl-uploader-window">
+		<div class="uploader-window-content">
+			<h3>Drop files to upload</h3>
+		</div>
+	</script>
+
+	<script type="text/html" id="tmpl-uploader-editor">
+		<div class="uploader-editor-content">
+			<div class="uploader-editor-title">Drop files to upload</div>
+		</div>
+	</script>
+
+	<script type="text/html" id="tmpl-uploader-inline">
+		<# var messageClass = data.message ? 'has-upload-message' : 'no-upload-message'; #>
+		<div class="uploader-inline-content {{ messageClass }}">
+		<# if ( data.message ) { #>
+			<h3 class="upload-message">{{ data.message }}</h3>
+		<# } #>
+					<div class="upload-ui">
+				<h3 class="upload-instructions drop-instructions">Drop files anywhere to upload</h3>
+				<a href="#" class="browser button button-hero">Select Files</a>
+			</div>
+
+			<div class="upload-inline-status"></div>
+
+			<div class="post-upload-ui">
+				
+				<p class="max-upload-size">Maximum upload file size: 128MB.</p>
+
+				<# if ( data.suggestedWidth && data.suggestedHeight ) { #>
+					<p class="suggested-dimensions">
+						Suggested image dimensions: {{data.suggestedWidth}} &times; {{data.suggestedHeight}}
+					</p>
+				<# } #>
+
+							</div>
+				</div>
+	</script>
+
+	<script type="text/html" id="tmpl-uploader-status">
+		<h3>Uploading</h3>
+		<a class="upload-dismiss-errors" href="#">Dismiss Errors</a>
+
+		<div class="media-progress-bar"><div></div></div>
+		<div class="upload-details">
+			<span class="upload-count">
+				<span class="upload-index"></span> / <span class="upload-total"></span>
+			</span>
+			<span class="upload-detail-separator">&ndash;</span>
+			<span class="upload-filename"></span>
+		</div>
+		<div class="upload-errors"></div>
+	</script>
+
+	<script type="text/html" id="tmpl-uploader-status-error">
+		<span class="upload-error-label">Error</span>
+		<span class="upload-error-filename">{{{ data.filename }}}</span>
+		<span class="upload-error-message">{{ data.message }}</span>
+	</script>
+
+	<script type="text/html" id="tmpl-attachment">
+		<div class="attachment-preview type-{{ data.type }} subtype-{{ data.subtype }} {{ data.orientation }}">
+			<# if ( data.uploading ) { #>
+				<div class="media-progress-bar"><div></div></div>
+			<# } else if ( 'image' === data.type ) { #>
+				<div class="thumbnail">
+					<div class="centered">
+						<img src="{{ data.size.url }}" draggable="false" />
+					</div>
+				</div>
+			<# } else { #>
+				<img src="{{ data.icon }}" class="icon" draggable="false" />
+				<div class="filename">
+					<div>{{ data.filename }}</div>
+				</div>
+			<# } #>
+
+			<# if ( data.buttons.close ) { #>
+				<a class="close media-modal-icon" href="#" title="Remove"></a>
+			<# } #>
+
+			<# if ( data.buttons.check ) { #>
+				<a class="check" href="#" title="Deselect"><div class="media-modal-icon"></div></a>
+			<# } #>
+		</div>
+		<#
+		var maybeReadOnly = data.can.save || data.allowLocalEdits ? '' : 'readonly';
+		if ( data.describe ) { #>
+			<# if ( 'image' === data.type ) { #>
+				<input type="text" value="{{ data.caption }}" class="describe" data-setting="caption"
+					placeholder="Caption this image&hellip;" {{ maybeReadOnly }} />
+			<# } else { #>
+				<input type="text" value="{{ data.title }}" class="describe" data-setting="title"
+					<# if ( 'video' === data.type ) { #>
+						placeholder="Describe this video&hellip;"
+					<# } else if ( 'audio' === data.type ) { #>
+						placeholder="Describe this audio file&hellip;"
+					<# } else { #>
+						placeholder="Describe this media file&hellip;"
+					<# } #> {{ maybeReadOnly }} />
+			<# } #>
+		<# } #>
+	</script>
+
+	<script type="text/html" id="tmpl-attachment-details">
+		<h3>
+			Attachment Details
+			<span class="settings-save-status">
+				<span class="spinner"></span>
+				<span class="saved">Saved.</span>
+			</span>
+		</h3>
+		<div class="attachment-info">
+			<div class="thumbnail">
+				<# if ( data.uploading ) { #>
+					<div class="media-progress-bar"><div></div></div>
+				<# } else if ( 'image' === data.type ) { #>
+					<img src="{{ data.size.url }}" draggable="false" />
+				<# } else { #>
+					<img src="{{ data.icon }}" class="icon" draggable="false" />
+				<# } #>
+			</div>
+			<div class="details">
+				<div class="filename">{{ data.filename }}</div>
+				<div class="uploaded">{{ data.dateFormatted }}</div>
+
+				<# if ( 'image' === data.type && ! data.uploading ) { #>
+					<# if ( data.width && data.height ) { #>
+						<div class="dimensions">{{ data.width }} &times; {{ data.height }}</div>
+					<# } #>
+
+					<# if ( data.can.save ) { #>
+						<a class="edit-attachment" href="{{ data.editLink }}&amp;image-editor" target="_blank">Edit Image</a>
+						<a class="refresh-attachment" href="#">Refresh</a>
+					<# } #>
+				<# } #>
+
+				<# if ( data.fileLength ) { #>
+					<div class="file-length">Length: {{ data.fileLength }}</div>
+				<# } #>
+
+				<# if ( ! data.uploading && data.can.remove ) { #>
+											<a class="delete-attachment" href="#">Delete Permanently</a>
+									<# } #>
+
+				<div class="compat-meta">
+					<# if ( data.compat && data.compat.meta ) { #>
+						{{{ data.compat.meta }}}
+					<# } #>
+				</div>
+			</div>
+		</div>
+
+		<# var maybeReadOnly = data.can.save || data.allowLocalEdits ? '' : 'readonly'; #>
+			<label class="setting" data-setting="title">
+				<span>Title</span>
+				<input type="text" value="{{ data.title }}" {{ maybeReadOnly }} />
+			</label>
+			<label class="setting" data-setting="caption">
+				<span>Caption</span>
+				<textarea {{ maybeReadOnly }}>{{ data.caption }}</textarea>
+			</label>
+		<# if ( 'image' === data.type ) { #>
+			<label class="setting" data-setting="alt">
+				<span>Alt Text</span>
+				<input type="text" value="{{ data.alt }}" {{ maybeReadOnly }} />
+			</label>
+		<# } #>
+			<label class="setting" data-setting="description">
+				<span>Description</span>
+				<textarea {{ maybeReadOnly }}>{{ data.description }}</textarea>
+			</label>
+	</script>
+
+	<script type="text/html" id="tmpl-media-selection">
+		<div class="selection-info">
+			<span class="count"></span>
+			<# if ( data.editable ) { #>
+				<a class="edit-selection" href="#">Edit</a>
+			<# } #>
+			<# if ( data.clearable ) { #>
+				<a class="clear-selection" href="#">Clear</a>
+			<# } #>
+		</div>
+		<div class="selection-view"></div>
+	</script>
+
+	<script type="text/html" id="tmpl-attachment-display-settings">
+		<h3>Attachment Display Settings</h3>
+
+		<# if ( 'image' === data.type ) { #>
+			<label class="setting">
+				<span>Alignment</span>
+				<select class="alignment"
+					data-setting="align"
+					<# if ( data.userSettings ) { #>
+						data-user-setting="align"
+					<# } #>>
+
+					<option value="left">
+						Left					</option>
+					<option value="center">
+						Center					</option>
+					<option value="right">
+						Right					</option>
+					<option value="none" selected>
+						None					</option>
+				</select>
+			</label>
+		<# } #>
+
+		<div class="setting">
+			<label>
+				<# if ( data.model.canEmbed ) { #>
+					<span>Embed or Link</span>
+				<# } else { #>
+					<span>Link To</span>
+				<# } #>
+
+				<select class="link-to"
+					data-setting="link"
+					<# if ( data.userSettings && ! data.model.canEmbed ) { #>
+						data-user-setting="urlbutton"
+					<# } #>>
+
+				<# if ( data.model.canEmbed ) { #>
+					<option value="embed" selected>
+						Embed Media Player					</option>
+					<option value="file">
+				<# } else { #>
+					<option value="file" selected>
+				<# } #>
+					<# if ( data.model.canEmbed ) { #>
+						Link to Media File					<# } else { #>
+						Media File					<# } #>
+					</option>
+					<option value="post">
+					<# if ( data.model.canEmbed ) { #>
+						Link to Attachment Page					<# } else { #>
+						Attachment Page					<# } #>
+					</option>
+				<# if ( 'image' === data.type ) { #>
+					<option value="custom">
+						Custom URL					</option>
+					<option value="none">
+						None					</option>
+				<# } #>
+				</select>
+			</label>
+			<input type="text" class="link-to-custom" data-setting="linkUrl" />
+		</div>
+
+		<# if ( 'undefined' !== typeof data.sizes ) { #>
+			<label class="setting">
+				<span>Size</span>
+				<select class="size" name="size"
+					data-setting="size"
+					<# if ( data.userSettings ) { #>
+						data-user-setting="imgsize"
+					<# } #>>
+											<#
+						var size = data.sizes['thumbnail'];
+						if ( size ) { #>
+							<option value="thumbnail" >
+								Thumbnail &ndash; {{ size.width }} &times; {{ size.height }}
+							</option>
+						<# } #>
+											<#
+						var size = data.sizes['medium'];
+						if ( size ) { #>
+							<option value="medium" >
+								Medium &ndash; {{ size.width }} &times; {{ size.height }}
+							</option>
+						<# } #>
+											<#
+						var size = data.sizes['large'];
+						if ( size ) { #>
+							<option value="large" >
+								Large &ndash; {{ size.width }} &times; {{ size.height }}
+							</option>
+						<# } #>
+											<#
+						var size = data.sizes['full'];
+						if ( size ) { #>
+							<option value="full"  selected='selected'>
+								Full Size &ndash; {{ size.width }} &times; {{ size.height }}
+							</option>
+						<# } #>
+									</select>
+			</label>
+		<# } #>
+	</script>
+
+	<script type="text/html" id="tmpl-gallery-settings">
+		<h3>Gallery Settings</h3>
+
+		<label class="setting">
+			<span>Link To</span>
+			<select class="link-to"
+				data-setting="link"
+				<# if ( data.userSettings ) { #>
+					data-user-setting="urlbutton"
+				<# } #>>
+
+				<option value="post" selected>
+					Attachment Page				</option>
+				<option value="file">
+					Media File				</option>
+				<option value="none">
+					None				</option>
+			</select>
+		</label>
+
+		<label class="setting">
+			<span>Columns</span>
+			<select class="columns" name="columns"
+				data-setting="columns">
+									<option value="1" >
+						1					</option>
+									<option value="2" >
+						2					</option>
+									<option value="3"  selected='selected'>
+						3					</option>
+									<option value="4" >
+						4					</option>
+									<option value="5" >
+						5					</option>
+									<option value="6" >
+						6					</option>
+									<option value="7" >
+						7					</option>
+									<option value="8" >
+						8					</option>
+									<option value="9" >
+						9					</option>
+							</select>
+		</label>
+
+		<label class="setting">
+			<span>Random Order</span>
+			<input type="checkbox" data-setting="_orderbyRandom" />
+		</label>
+	</script>
+
+	<script type="text/html" id="tmpl-playlist-settings">
+		<h3>Playlist Settings</h3>
+
+		<# var emptyModel = _.isEmpty( data.model ),
+			isVideo = 'video' === data.controller.get('library').props.get('type'); #>
+
+		<label class="setting">
+			<input type="checkbox" data-setting="tracklist" <# if ( emptyModel ) { #>
+				checked="checked"
+			<# } #> />
+			<# if ( isVideo ) { #>
+			<span>Show Video List</span>
+			<# } else { #>
+			<span>Show Tracklist</span>
+			<# } #>
+		</label>
+
+		<# if ( ! isVideo ) { #>
+		<label class="setting">
+			<input type="checkbox" data-setting="artists" <# if ( emptyModel ) { #>
+				checked="checked"
+			<# } #> />
+			<span>Show Artist Name in Tracklist</span>
+		</label>
+		<# } #>
+
+		<label class="setting">
+			<input type="checkbox" data-setting="images" <# if ( emptyModel ) { #>
+				checked="checked"
+			<# } #> />
+			<span>Show Images</span>
+		</label>
+	</script>
+
+	<script type="text/html" id="tmpl-embed-link-settings">
+		<label class="setting">
+			<span>Title</span>
+			<input type="text" class="alignment" data-setting="title" />
+		</label>
+	</script>
+
+	<script type="text/html" id="tmpl-embed-image-settings">
+		<div class="thumbnail">
+			<img src="{{ data.model.url }}" draggable="false" />
+		</div>
+
+					<label class="setting caption">
+				<span>Caption</span>
+				<textarea data-setting="caption" />
+			</label>
+		
+		<label class="setting alt-text">
+			<span>Alt Text</span>
+			<input type="text" data-setting="alt" />
+		</label>
+
+		<div class="setting align">
+			<span>Align</span>
+			<div class="button-group button-large" data-setting="align">
+				<button class="button" value="left">
+					Left				</button>
+				<button class="button" value="center">
+					Center				</button>
+				<button class="button" value="right">
+					Right				</button>
+				<button class="button active" value="none">
+					None				</button>
+			</div>
+		</div>
+
+		<div class="setting link-to">
+			<span>Link To</span>
+			<div class="button-group button-large" data-setting="link">
+				<button class="button" value="file">
+					Image URL				</button>
+				<button class="button" value="custom">
+					Custom URL				</button>
+				<button class="button active" value="none">
+					None				</button>
+			</div>
+			<input type="text" class="link-to-custom" data-setting="linkUrl" />
+		</div>
+	</script>
+
+	<script type="text/html" id="tmpl-attachments-css">
+		<style type="text/css" id="{{ data.id }}-css">
+			#{{ data.id }} {
+				padding: 0 {{ data.gutter }}px;
+			}
+
+			#{{ data.id }} .attachment {
+				margin: {{ data.gutter }}px;
+				width: {{ data.edge }}px;
+			}
+
+			#{{ data.id }} .attachment-preview,
+			#{{ data.id }} .attachment-preview .thumbnail {
+				width: {{ data.edge }}px;
+				height: {{ data.edge }}px;
+			}
+
+			#{{ data.id }} .portrait .thumbnail img {
+				max-width: {{ data.edge }}px;
+				height: auto;
+			}
+
+			#{{ data.id }} .landscape .thumbnail img {
+				width: auto;
+				max-height: {{ data.edge }}px;
+			}
+		</style>
+	</script>
+
+	<script type="text/html" id="tmpl-image-details">
+		<div class="media-embed">
+			<div class="embed-media-settings">
+				<div class="column-image">
+					<div class="image">
+						<img src="{{ data.model.url }}" draggable="false" />
+
+						<# if ( data.attachment && window.imageEdit ) { #>
+							<div class="actions">
+								<input type="button" class="edit-attachment button" value="Edit Original" />
+								<input type="button" class="replace-attachment button" value="Replace" />
+							</div>
+						<# } #>
+					</div>
+				</div>
+				<div class="column-settings">
+											<label class="setting caption">
+							<span>Caption</span>
+							<textarea data-setting="caption">{{ data.model.caption }}</textarea>
+						</label>
+					
+					<label class="setting alt-text">
+						<span>Alternative Text</span>
+						<input type="text" data-setting="alt" value="{{ data.model.alt }}" />
+					</label>
+
+					<h3>Display Settings</h3>
+					<div class="setting align">
+						<span>Align</span>
+						<div class="button-group button-large" data-setting="align">
+							<button class="button" value="left">
+								Left							</button>
+							<button class="button" value="center">
+								Center							</button>
+							<button class="button" value="right">
+								Right							</button>
+							<button class="button active" value="none">
+								None							</button>
+						</div>
+					</div>
+
+					<# if ( data.attachment ) { #>
+						<# if ( 'undefined' !== typeof data.attachment.sizes ) { #>
+							<label class="setting size">
+								<span>Size</span>
+								<select class="size" name="size"
+									data-setting="size"
+									<# if ( data.userSettings ) { #>
+										data-user-setting="imgsize"
+									<# } #>>
+																			<#
+										var size = data.sizes['thumbnail'];
+										if ( size ) { #>
+											<option value="thumbnail">
+												Thumbnail &ndash; {{ size.width }} &times; {{ size.height }}
+											</option>
+										<# } #>
+																			<#
+										var size = data.sizes['medium'];
+										if ( size ) { #>
+											<option value="medium">
+												Medium &ndash; {{ size.width }} &times; {{ size.height }}
+											</option>
+										<# } #>
+																			<#
+										var size = data.sizes['large'];
+										if ( size ) { #>
+											<option value="large">
+												Large &ndash; {{ size.width }} &times; {{ size.height }}
+											</option>
+										<# } #>
+																			<#
+										var size = data.sizes['full'];
+										if ( size ) { #>
+											<option value="full">
+												Full Size &ndash; {{ size.width }} &times; {{ size.height }}
+											</option>
+										<# } #>
+																		<option value="custom">
+										Custom Size									</option>
+								</select>
+							</label>
+						<# } #>
+							<div class="custom-size<# if ( data.model.size !== 'custom' ) { #> hidden<# } #>">
+								<label><span>Width <small>(px)</small></span> <input data-setting="customWidth" type="number" step="1" value="{{ data.model.customWidth }}" /></label><span class="sep">&times;</span><label><span>Height <small>(px)</small></span><input data-setting="customHeight" type="number" step="1" value="{{ data.model.customHeight }}" /></label>
+							</div>
+					<# } #>
+
+					<div class="setting link-to">
+						<span>Link To</span>
+						<select data-setting="link">
+						<# if ( data.attachment ) { #>
+							<option value="file">
+								Media File							</option>
+							<option value="post">
+								Attachment Page							</option>
+						<# } else { #>
+							<option value="file">
+								Image URL							</option>
+						<# } #>
+							<option value="custom">
+								Custom URL							</option>
+							<option value="none">
+								None							</option>
+						</select>
+						<input type="text" class="link-to-custom" data-setting="linkUrl" />
+					</div>
+					<div class="advanced-section">
+						<h3><a class="advanced-toggle" href="#">Advanced Options</a></h3>
+						<div class="advanced-settings hidden">
+							<div class="advanced-image">
+								<label class="setting title-text">
+									<span>Image Title Attribute</span>
+									<input type="text" data-setting="title" value="{{ data.model.title }}" />
+								</label>
+								<label class="setting extra-classes">
+									<span>Image CSS Class</span>
+									<input type="text" data-setting="extraClasses" value="{{ data.model.extraClasses }}" />
+								</label>
+							</div>
+							<div class="advanced-link">
+								<div class="setting link-target">
+									<label><input type="checkbox" data-setting="linkTargetBlank" value="_blank" <# if ( data.model.linkTargetBlank ) { #>checked="checked"<# } #>>Open link in a new window/tab</label>
+								</div>
+								<label class="setting link-rel">
+									<span>Link Rel</span>
+									<input type="text" data-setting="linkRel" value="{{ data.model.linkClassName }}" />
+								</label>
+								<label class="setting link-class-name">
+									<span>Link CSS Class</span>
+									<input type="text" data-setting="linkClassName" value="{{ data.model.linkClassName }}" />
+								</label>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</script>
+
+	<script type="text/html" id="tmpl-image-editor">
+		<div id="media-head-{{ data.id }}"></div>
+		<div id="image-editor-{{ data.id }}"></div>
+	</script>
+
+	<script type="text/html" id="tmpl-audio-details">
+		<# var ext, html5types = {
+			mp3: wp.media.view.settings.embedMimes.mp3,
+			ogg: wp.media.view.settings.embedMimes.ogg
+		}; #>
+
+				<div class="media-embed media-embed-details">
+			<div class="embed-media-settings embed-audio-settings">
+				<audio controls
+	class="wp-audio-shortcode"
+	width="{{ _.isUndefined( data.model.width ) ? 400 : data.model.width }}"
+	preload="{{ _.isUndefined( data.model.preload ) ? 'none' : data.model.preload }}"
+	<#
+	if ( ! _.isUndefined( data.model.autoplay ) && data.model.autoplay ) {
+		#> autoplay<#
+	}
+	if ( ! _.isUndefined( data.model.loop ) && data.model.loop ) {
+		#> loop<#
+	}
+	#>
+>
+	<# if ( ! _.isEmpty( data.model.src ) ) { #>
+	<source src="{{ data.model.src }}" type="{{ wp.media.view.settings.embedMimes[ data.model.src.split('.').pop() ] }}" />
+	<# } #>
+
+	<# if ( ! _.isEmpty( data.model.mp3 ) ) { #>
+	<source src="{{ data.model.mp3 }}" type="{{ wp.media.view.settings.embedMimes[ 'mp3' ] }}" />
+	<# } #>
+	<# if ( ! _.isEmpty( data.model.ogg ) ) { #>
+	<source src="{{ data.model.ogg }}" type="{{ wp.media.view.settings.embedMimes[ 'ogg' ] }}" />
+	<# } #>
+	<# if ( ! _.isEmpty( data.model.wma ) ) { #>
+	<source src="{{ data.model.wma }}" type="{{ wp.media.view.settings.embedMimes[ 'wma' ] }}" />
+	<# } #>
+	<# if ( ! _.isEmpty( data.model.m4a ) ) { #>
+	<source src="{{ data.model.m4a }}" type="{{ wp.media.view.settings.embedMimes[ 'm4a' ] }}" />
+	<# } #>
+	<# if ( ! _.isEmpty( data.model.wav ) ) { #>
+	<source src="{{ data.model.wav }}" type="{{ wp.media.view.settings.embedMimes[ 'wav' ] }}" />
+	<# } #>
+	</audio>
+
+				<# if ( ! _.isEmpty( data.model.src ) ) {
+					ext = data.model.src.split('.').pop();
+					if ( html5types[ ext ] ) {
+						delete html5types[ ext ];
+					}
+				#>
+				<label class="setting">
+					<span>SRC</span>
+					<input type="text" disabled="disabled" data-setting="src" value="{{ data.model.src }}" />
+					<a class="remove-setting">Remove</a>
+				</label>
+				<# } #>
+				<# if ( ! _.isEmpty( data.model.mp3 ) ) {
+					if ( ! _.isUndefined( html5types.mp3 ) ) {
+						delete html5types.mp3;
+					}
+				#>
+				<label class="setting">
+					<span>MP3</span>
+					<input type="text" disabled="disabled" data-setting="mp3" value="{{ data.model.mp3 }}" />
+					<a class="remove-setting">Remove</a>
+				</label>
+				<# } #>
+				<# if ( ! _.isEmpty( data.model.ogg ) ) {
+					if ( ! _.isUndefined( html5types.ogg ) ) {
+						delete html5types.ogg;
+					}
+				#>
+				<label class="setting">
+					<span>OGG</span>
+					<input type="text" disabled="disabled" data-setting="ogg" value="{{ data.model.ogg }}" />
+					<a class="remove-setting">Remove</a>
+				</label>
+				<# } #>
+				<# if ( ! _.isEmpty( data.model.wma ) ) {
+					if ( ! _.isUndefined( html5types.wma ) ) {
+						delete html5types.wma;
+					}
+				#>
+				<label class="setting">
+					<span>WMA</span>
+					<input type="text" disabled="disabled" data-setting="wma" value="{{ data.model.wma }}" />
+					<a class="remove-setting">Remove</a>
+				</label>
+				<# } #>
+				<# if ( ! _.isEmpty( data.model.m4a ) ) {
+					if ( ! _.isUndefined( html5types.m4a ) ) {
+						delete html5types.m4a;
+					}
+				#>
+				<label class="setting">
+					<span>M4A</span>
+					<input type="text" disabled="disabled" data-setting="m4a" value="{{ data.model.m4a }}" />
+					<a class="remove-setting">Remove</a>
+				</label>
+				<# } #>
+				<# if ( ! _.isEmpty( data.model.wav ) ) {
+					if ( ! _.isUndefined( html5types.wav ) ) {
+						delete html5types.wav;
+					}
+				#>
+				<label class="setting">
+					<span>WAV</span>
+					<input type="text" disabled="disabled" data-setting="wav" value="{{ data.model.wav }}" />
+					<a class="remove-setting">Remove</a>
+				</label>
+				<# } #>
+				
+				<# if ( ! _.isEmpty( html5types ) ) { #>
+				<div class="setting">
+					<span>Add alternate sources for maximum HTML5 playback:</span>
+					<div class="button-large">
+					<# _.each( html5types, function (mime, type) { #>
+					<button class="button add-media-source" data-mime="{{ mime }}">{{ type }}</button>
+					<# } ) #>
+					</div>
+				</div>
+				<# } #>
+
+				<div class="setting preload">
+					<span>Preload</span>
+					<div class="button-group button-large" data-setting="preload">
+						<button class="button" value="auto">Auto</button>
+						<button class="button" value="metadata">Metadata</button>
+						<button class="button active" value="none">None</button>
+					</div>
+				</div>
+
+				<label class="setting checkbox-setting">
+					<span>Autoplay</span>
+					<input type="checkbox" data-setting="autoplay" />
+				</label>
+
+				<label class="setting checkbox-setting">
+					<span>Loop</span>
+					<input type="checkbox" data-setting="loop" />
+				</label>
+				<div class="clear"></div>
+			</div>
+		</div>
+	</script>
+
+	<script type="text/html" id="tmpl-video-details">
+		<# var ext, html5types = {
+			mp4: wp.media.view.settings.embedMimes.mp4,
+			ogv: wp.media.view.settings.embedMimes.ogv,
+			webm: wp.media.view.settings.embedMimes.webm
+		}; #>
+
+				<div class="media-embed media-embed-details">
+			<div class="embed-media-settings embed-video-settings">
+				<div class="wp-video-holder">
+				<#
+				var isYouTube = ! _.isEmpty( data.model.src ) && data.model.src.match(/youtube|youtu\.be/);
+					w = ! data.model.width || data.model.width > 640 ? 640 : data.model.width,
+					h = ! data.model.height ? 360 : data.model.height;
+
+				if ( data.model.width && w !== data.model.width ) {
+					h = Math.ceil( ( h * w ) / data.model.width );
+				}
+				#>
+
+				<#  var w, h, settings = wp.media.view.settings,
+		isYouTube = ! _.isEmpty( data.model.src ) && data.model.src.match(/youtube|youtu\.be/);
+
+	if ( settings.contentWidth && data.model.width >= settings.contentWidth ) {
+		w = settings.contentWidth;
+	} else {
+		w = data.model.width;
+	}
+
+	if ( w !== data.model.width ) {
+		h = Math.ceil( ( h * w ) / data.model.width );
+	} else {
+		h = data.model.height;
+	}
+#>
+<div style="max-width: 100%; width: {{ w }}px">
+<video controls
+	class="wp-video-shortcode{{ isYouTube ? ' youtube-video' : '' }}"
+	width="{{ w }}"
+	height="{{ h }}"
+	<#
+		if ( ! _.isUndefined( data.model.poster ) && data.model.poster ) {
+			#> poster="{{ data.model.poster }}"<#
+		} #>
+		preload="{{ _.isUndefined( data.model.preload ) ? 'metadata' : data.model.preload }}"<#
+	 if ( ! _.isUndefined( data.model.autoplay ) && data.model.autoplay ) {
+		#> autoplay<#
+	}
+	 if ( ! _.isUndefined( data.model.loop ) && data.model.loop ) {
+		#> loop<#
+	}
+	#>
+>
+	<# if ( ! _.isEmpty( data.model.src ) ) {
+		if ( isYouTube ) { #>
+		<source src="{{ data.model.src }}" type="video/youtube" />
+		<# } else { #>
+		<source src="{{ data.model.src }}" type="{{ settings.embedMimes[ data.model.src.split('.').pop() ] }}" />
+		<# }
+	} #>
+
+	<# if ( data.model.mp4 ) { #>
+	<source src="{{ data.model.mp4 }}" type="{{ settings.embedMimes[ 'mp4' ] }}" />
+	<# } #>
+	<# if ( data.model.m4v ) { #>
+	<source src="{{ data.model.m4v }}" type="{{ settings.embedMimes[ 'm4v' ] }}" />
+	<# } #>
+	<# if ( data.model.webm ) { #>
+	<source src="{{ data.model.webm }}" type="{{ settings.embedMimes[ 'webm' ] }}" />
+	<# } #>
+	<# if ( data.model.ogv ) { #>
+	<source src="{{ data.model.ogv }}" type="{{ settings.embedMimes[ 'ogv' ] }}" />
+	<# } #>
+	<# if ( data.model.wmv ) { #>
+	<source src="{{ data.model.wmv }}" type="{{ settings.embedMimes[ 'wmv' ] }}" />
+	<# } #>
+	<# if ( data.model.flv ) { #>
+	<source src="{{ data.model.flv }}" type="{{ settings.embedMimes[ 'flv' ] }}" />
+	<# } #>
+		{{{ data.model.content }}}
+</video>
+</div>
+
+				<# if ( ! _.isEmpty( data.model.src ) ) {
+					ext = data.model.src.split('.').pop();
+					if ( html5types[ ext ] ) {
+						delete html5types[ ext ];
+					}
+				#>
+				<label class="setting">
+					<span>SRC</span>
+					<input type="text" disabled="disabled" data-setting="src" value="{{ data.model.src }}" />
+					<a class="remove-setting">Remove</a>
+				</label>
+				<# } #>
+				<# if ( ! _.isEmpty( data.model.mp4 ) ) {
+					if ( ! _.isUndefined( html5types.mp4 ) ) {
+						delete html5types.mp4;
+					}
+				#>
+				<label class="setting">
+					<span>MP4</span>
+					<input type="text" disabled="disabled" data-setting="mp4" value="{{ data.model.mp4 }}" />
+					<a class="remove-setting">Remove</a>
+				</label>
+				<# } #>
+				<# if ( ! _.isEmpty( data.model.m4v ) ) {
+					if ( ! _.isUndefined( html5types.m4v ) ) {
+						delete html5types.m4v;
+					}
+				#>
+				<label class="setting">
+					<span>M4V</span>
+					<input type="text" disabled="disabled" data-setting="m4v" value="{{ data.model.m4v }}" />
+					<a class="remove-setting">Remove</a>
+				</label>
+				<# } #>
+				<# if ( ! _.isEmpty( data.model.webm ) ) {
+					if ( ! _.isUndefined( html5types.webm ) ) {
+						delete html5types.webm;
+					}
+				#>
+				<label class="setting">
+					<span>WEBM</span>
+					<input type="text" disabled="disabled" data-setting="webm" value="{{ data.model.webm }}" />
+					<a class="remove-setting">Remove</a>
+				</label>
+				<# } #>
+				<# if ( ! _.isEmpty( data.model.ogv ) ) {
+					if ( ! _.isUndefined( html5types.ogv ) ) {
+						delete html5types.ogv;
+					}
+				#>
+				<label class="setting">
+					<span>OGV</span>
+					<input type="text" disabled="disabled" data-setting="ogv" value="{{ data.model.ogv }}" />
+					<a class="remove-setting">Remove</a>
+				</label>
+				<# } #>
+				<# if ( ! _.isEmpty( data.model.wmv ) ) {
+					if ( ! _.isUndefined( html5types.wmv ) ) {
+						delete html5types.wmv;
+					}
+				#>
+				<label class="setting">
+					<span>WMV</span>
+					<input type="text" disabled="disabled" data-setting="wmv" value="{{ data.model.wmv }}" />
+					<a class="remove-setting">Remove</a>
+				</label>
+				<# } #>
+				<# if ( ! _.isEmpty( data.model.flv ) ) {
+					if ( ! _.isUndefined( html5types.flv ) ) {
+						delete html5types.flv;
+					}
+				#>
+				<label class="setting">
+					<span>FLV</span>
+					<input type="text" disabled="disabled" data-setting="flv" value="{{ data.model.flv }}" />
+					<a class="remove-setting">Remove</a>
+				</label>
+				<# } #>
+								</div>
+
+				<# if ( ! _.isEmpty( html5types ) ) { #>
+				<div class="setting">
+					<span>Add alternate sources for maximum HTML5 playback:</span>
+					<div class="button-large">
+					<# _.each( html5types, function (mime, type) { #>
+					<button class="button add-media-source" data-mime="{{ mime }}">{{ type }}</button>
+					<# } ) #>
+					</div>
+				</div>
+				<# } #>
+
+				<# if ( ! _.isEmpty( data.model.poster ) ) { #>
+				<label class="setting">
+					<span>Poster Image</span>
+					<input type="text" disabled="disabled" data-setting="poster" value="{{ data.model.poster }}" />
+					<a class="remove-setting">Remove</a>
+				</label>
+				<# } #>
+				<div class="setting preload">
+					<span>Preload</span>
+					<div class="button-group button-large" data-setting="preload">
+						<button class="button" value="auto">Auto</button>
+						<button class="button" value="metadata">Metadata</button>
+						<button class="button active" value="none">None</button>
+					</div>
+				</div>
+
+				<label class="setting checkbox-setting">
+					<span>Autoplay</span>
+					<input type="checkbox" data-setting="autoplay" />
+				</label>
+
+				<label class="setting checkbox-setting">
+					<span>Loop</span>
+					<input type="checkbox" data-setting="loop" />
+				</label>
+				<div class="clear"></div>
+
+				<label class="setting" data-setting="content">
+					<span>Tracks (subtitles, captions, descriptions, chapters, or metadata)</span>
+					<#
+					var content = '';
+					if ( ! _.isEmpty( data.model.content ) ) {
+						var tracks = jQuery( data.model.content ).filter( 'track' );
+						_.each( tracks.toArray(), function (track) {
+							content += track.outerHTML; #>
+						<p>
+							<input class="content-track" type="text" value="{{ track.outerHTML }}" />
+							<a class="remove-setting remove-track">Remove</a>
+						</p>
+						<# } ); #>
+					<# } else { #>
+					<em>There are no associated subtitles.</em>
+					<# } #>
+					<textarea class="hidden content-setting">{{ content }}</textarea>
+				</label>
+			</div>
+		</div>
+	</script>
+
+	<script type="text/html" id="tmpl-editor-gallery">
+		<div class="toolbar">
+			<div class="dashicons dashicons-edit edit"></div><div class="dashicons dashicons-no-alt remove"></div>
+		</div>
+		<# if ( data.attachments ) { #>
+			<div class="gallery gallery-columns-{{ data.columns }}">
+				<# _.each( data.attachments, function( attachment, index ) { #>
+					<dl class="gallery-item">
+						<dt class="gallery-icon">
+							<# if ( attachment.thumbnail ) { #>
+								<img src="{{ attachment.thumbnail.url }}" width="{{ attachment.thumbnail.width }}" height="{{ attachment.thumbnail.height }}" />
+							<# } else { #>
+								<img src="{{ attachment.url }}" />
+							<# } #>
+						</dt>
+						<dd class="wp-caption-text gallery-caption">
+							{{ attachment.caption }}
+						</dd>
+					</dl>
+					<# if ( index % data.columns === data.columns - 1 ) { #>
+						<br style="clear: both;">
+					<# } #>
+				<# } ); #>
+			</div>
+		<# } else { #>
+			<div class="wpview-error">
+				<div class="dashicons dashicons-format-gallery"></div><p>No items found.</p>
+			</div>
+		<# } #>
+	</script>
+
+	<script type="text/html" id="tmpl-editor-audio">
+		<div class="toolbar">
+			<div class="dashicons dashicons-edit edit"></div>
+			<div class="dashicons dashicons-no-alt remove"></div>
+		</div>
+		<audio controls
+	class="wp-audio-shortcode"
+	width="{{ _.isUndefined( data.model.width ) ? 400 : data.model.width }}"
+	preload="{{ _.isUndefined( data.model.preload ) ? 'none' : data.model.preload }}"
+	<#
+	if ( ! _.isUndefined( data.model.autoplay ) && data.model.autoplay ) {
+		#> autoplay<#
+	}
+	if ( ! _.isUndefined( data.model.loop ) && data.model.loop ) {
+		#> loop<#
+	}
+	#>
+>
+	<# if ( ! _.isEmpty( data.model.src ) ) { #>
+	<source src="{{ data.model.src }}" type="{{ wp.media.view.settings.embedMimes[ data.model.src.split('.').pop() ] }}" />
+	<# } #>
+
+	<# if ( ! _.isEmpty( data.model.mp3 ) ) { #>
+	<source src="{{ data.model.mp3 }}" type="{{ wp.media.view.settings.embedMimes[ 'mp3' ] }}" />
+	<# } #>
+	<# if ( ! _.isEmpty( data.model.ogg ) ) { #>
+	<source src="{{ data.model.ogg }}" type="{{ wp.media.view.settings.embedMimes[ 'ogg' ] }}" />
+	<# } #>
+	<# if ( ! _.isEmpty( data.model.wma ) ) { #>
+	<source src="{{ data.model.wma }}" type="{{ wp.media.view.settings.embedMimes[ 'wma' ] }}" />
+	<# } #>
+	<# if ( ! _.isEmpty( data.model.m4a ) ) { #>
+	<source src="{{ data.model.m4a }}" type="{{ wp.media.view.settings.embedMimes[ 'm4a' ] }}" />
+	<# } #>
+	<# if ( ! _.isEmpty( data.model.wav ) ) { #>
+	<source src="{{ data.model.wav }}" type="{{ wp.media.view.settings.embedMimes[ 'wav' ] }}" />
+	<# } #>
+	</audio>
+		<div class="wpview-overlay"></div>
+	</script>
+
+	<script type="text/html" id="tmpl-editor-video">
+		<div class="toolbar">
+			<div class="dashicons dashicons-edit edit"></div>
+			<div class="dashicons dashicons-no-alt remove"></div>
+		</div>
+		<#  var w, h, settings = wp.media.view.settings,
+		isYouTube = ! _.isEmpty( data.model.src ) && data.model.src.match(/youtube|youtu\.be/);
+
+	if ( settings.contentWidth && data.model.width >= settings.contentWidth ) {
+		w = settings.contentWidth;
+	} else {
+		w = data.model.width;
+	}
+
+	if ( w !== data.model.width ) {
+		h = Math.ceil( ( h * w ) / data.model.width );
+	} else {
+		h = data.model.height;
+	}
+#>
+<div style="max-width: 100%; width: {{ w }}px">
+<video controls
+	class="wp-video-shortcode{{ isYouTube ? ' youtube-video' : '' }}"
+	width="{{ w }}"
+	height="{{ h }}"
+	<#
+		if ( ! _.isUndefined( data.model.poster ) && data.model.poster ) {
+			#> poster="{{ data.model.poster }}"<#
+		} #>
+		preload="{{ _.isUndefined( data.model.preload ) ? 'metadata' : data.model.preload }}"<#
+	 if ( ! _.isUndefined( data.model.autoplay ) && data.model.autoplay ) {
+		#> autoplay<#
+	}
+	 if ( ! _.isUndefined( data.model.loop ) && data.model.loop ) {
+		#> loop<#
+	}
+	#>
+>
+	<# if ( ! _.isEmpty( data.model.src ) ) {
+		if ( isYouTube ) { #>
+		<source src="{{ data.model.src }}" type="video/youtube" />
+		<# } else { #>
+		<source src="{{ data.model.src }}" type="{{ settings.embedMimes[ data.model.src.split('.').pop() ] }}" />
+		<# }
+	} #>
+
+	<# if ( data.model.mp4 ) { #>
+	<source src="{{ data.model.mp4 }}" type="{{ settings.embedMimes[ 'mp4' ] }}" />
+	<# } #>
+	<# if ( data.model.m4v ) { #>
+	<source src="{{ data.model.m4v }}" type="{{ settings.embedMimes[ 'm4v' ] }}" />
+	<# } #>
+	<# if ( data.model.webm ) { #>
+	<source src="{{ data.model.webm }}" type="{{ settings.embedMimes[ 'webm' ] }}" />
+	<# } #>
+	<# if ( data.model.ogv ) { #>
+	<source src="{{ data.model.ogv }}" type="{{ settings.embedMimes[ 'ogv' ] }}" />
+	<# } #>
+	<# if ( data.model.wmv ) { #>
+	<source src="{{ data.model.wmv }}" type="{{ settings.embedMimes[ 'wmv' ] }}" />
+	<# } #>
+	<# if ( data.model.flv ) { #>
+	<source src="{{ data.model.flv }}" type="{{ settings.embedMimes[ 'flv' ] }}" />
+	<# } #>
+		{{{ data.model.content }}}
+</video>
+</div>
+		<div class="wpview-overlay"></div>
+	</script>
+
+	<script type="text/html" id="tmpl-wp-playlist-current-item">
+	<# if ( data.image ) { #>
+	<img src="{{ data.thumb.src }}"/>
+	<# } #>
+	<div class="wp-playlist-caption">
+		<span class="wp-playlist-item-meta wp-playlist-item-title">&#8220;{{ data.title }}&#8221;</span>
+		<# if ( data.meta.album ) { #><span class="wp-playlist-item-meta wp-playlist-item-album">{{ data.meta.album }}</span><# } #>
+		<# if ( data.meta.artist ) { #><span class="wp-playlist-item-meta wp-playlist-item-artist">{{ data.meta.artist }}</span><# } #>
+	</div>
+</script>
+<script type="text/html" id="tmpl-wp-playlist-item">
+	<div class="wp-playlist-item">
+		<a class="wp-playlist-caption" href="{{ data.src }}">
+			{{ data.index ? ( data.index + '. ' ) : '' }}
+			<# if ( data.caption ) { #>
+				{{ data.caption }}
+			<# } else { #>
+				<span class="wp-playlist-item-title">&#8220;{{{ data.title }}}&#8221;</span>
+				<# if ( data.artists && data.meta.artist ) { #>
+				<span class="wp-playlist-item-artist"> &mdash; {{ data.meta.artist }}</span>
+				<# } #>
+			<# } #>
+		</a>
+		<# if ( data.meta.length_formatted ) { #>
+		<div class="wp-playlist-item-length">{{ data.meta.length_formatted }}</div>
+		<# } #>
+	</div>
+</script>
+
+	<script type="text/html" id="tmpl-editor-playlist">
+		<div class="toolbar">
+			<div class="dashicons dashicons-edit edit"></div>
+			<div class="dashicons dashicons-no-alt remove"></div>
+		</div>
+		<# if ( data.tracks ) { #>
+			<div class="wp-playlist wp-{{ data.type }}-playlist wp-playlist-{{ data.style }}">
+				<# if ( 'audio' === data.type ){ #>
+				<div class="wp-playlist-current-item"></div>
+				<# } #>
+				<{{ data.type }} controls="controls" preload="none" <#
+					if ( data.width ) { #> width="{{ data.width }}"<# }
+					#><# if ( data.height ) { #> height="{{ data.height }}"<# } #>></{{ data.type }}>
+				<div class="wp-playlist-next"></div>
+				<div class="wp-playlist-prev"></div>
+			</div>
+			<div class="wpview-overlay"></div>
+		<# } else { #>
+			<div class="wpview-error">
+				<div class="dashicons dashicons-video-alt3"></div><p>No items found.</p>
+			</div>
+		<# } #>
+	</script>
+
+	<script type="text/html" id="tmpl-crop-content">
+		<img class="crop-image" src="{{ data.url }}">
+		<div class="upload-errors"></div>
+	</script>
+
+		<script type="text/javascript">
+		var _wpCustomizeSettings = {"theme":{"stylesheet":"writr","active":true},"url":{"preview":"http:\/\/localhost\/karimunnews\/","parent":"http:\/\/localhost\/karimunnews\/wp-admin\/","activated":"http:\/\/localhost\/karimunnews\/wp-admin\/themes.php?activated=true&previewed","ajax":"\/karimunnews\/wp-admin\/admin-ajax.php","allowed":["http:\/\/localhost\/karimunnews\/"],"isCrossDomain":false,"fallback":"http:\/\/localhost\/karimunnews\/?preview=1&template=writr&stylesheet=writr&preview_iframe=1&TB_iframe=true","home":"http:\/\/localhost\/karimunnews\/","login":"http:\/\/localhost\/karimunnews\/wp-login.php?interim-login=1&customize-login=1"},"browser":{"mobile":false,"ios":false},"settings":{"widget_pages[1]":{"value":{"encoded_serialized_instance":"YTowOnt9","title":"","is_widget_customizer_js_value":true,"instance_hash_key":"d4c0901773cab7045b04decdf70ffc47"},"transport":"refresh"},"widget_calendar[1]":{"value":{"encoded_serialized_instance":"YTowOnt9","title":"","is_widget_customizer_js_value":true,"instance_hash_key":"d4c0901773cab7045b04decdf70ffc47"},"transport":"refresh"},"widget_archives[2]":{"value":{"encoded_serialized_instance":"YTozOntzOjU6InRpdGxlIjtzOjA6IiI7czo1OiJjb3VudCI7aTowO3M6ODoiZHJvcGRvd24iO2k6MDt9","title":"","is_widget_customizer_js_value":true,"instance_hash_key":"0295d5419195f7247bc2050aa50dfabe"},"transport":"refresh"},"widget_meta[2]":{"value":{"encoded_serialized_instance":"YToxOntzOjU6InRpdGxlIjtzOjA6IiI7fQ==","title":"","is_widget_customizer_js_value":true,"instance_hash_key":"f437661be0b87a0a0d03e36a0139f088"},"transport":"refresh"},"widget_search[2]":{"value":{"encoded_serialized_instance":"YToxOntzOjU6InRpdGxlIjtzOjA6IiI7fQ==","title":"","is_widget_customizer_js_value":true,"instance_hash_key":"f437661be0b87a0a0d03e36a0139f088"},"transport":"refresh"},"widget_text[1]":{"value":{"encoded_serialized_instance":"YTowOnt9","title":"","is_widget_customizer_js_value":true,"instance_hash_key":"d4c0901773cab7045b04decdf70ffc47"},"transport":"refresh"},"widget_categories[2]":{"value":{"encoded_serialized_instance":"YTo0OntzOjU6InRpdGxlIjtzOjg6IkthdGVnb3JpIjtzOjU6ImNvdW50IjtpOjA7czoxMjoiaGllcmFyY2hpY2FsIjtpOjA7czo4OiJkcm9wZG93biI7aTowO30=","title":"Kategori","is_widget_customizer_js_value":true,"instance_hash_key":"26e97a60e6ceccd5b61c830f5c7fe1ff"},"transport":"refresh"},"widget_recent-posts[2]":{"value":{"encoded_serialized_instance":"YTozOntzOjU6InRpdGxlIjtzOjE0OiJCZXJpdGEgVGVyYmFydSI7czo2OiJudW1iZXIiO2k6NTtzOjk6InNob3dfZGF0ZSI7YjoxO30=","title":"Berita Terbaru","is_widget_customizer_js_value":true,"instance_hash_key":"42cb5a45ddf5f4d4cde2d16529671f4e"},"transport":"refresh"},"widget_recent-comments[2]":{"value":{"encoded_serialized_instance":"YToyOntzOjU6InRpdGxlIjtzOjA6IiI7czo2OiJudW1iZXIiO2k6NTt9","title":"","is_widget_customizer_js_value":true,"instance_hash_key":"6e89b0abebb03d249f4f86101e7d9980"},"transport":"refresh"},"widget_rss[1]":{"value":{"encoded_serialized_instance":"YTowOnt9","title":"","is_widget_customizer_js_value":true,"instance_hash_key":"d4c0901773cab7045b04decdf70ffc47"},"transport":"refresh"},"widget_tag_cloud[1]":{"value":{"encoded_serialized_instance":"YTowOnt9","title":"","is_widget_customizer_js_value":true,"instance_hash_key":"d4c0901773cab7045b04decdf70ffc47"},"transport":"refresh"},"widget_nav_menu[1]":{"value":{"encoded_serialized_instance":"YTowOnt9","title":"","is_widget_customizer_js_value":true,"instance_hash_key":"d4c0901773cab7045b04decdf70ffc47"},"transport":"refresh"},"sidebars_widgets[wp_inactive_widgets]":{"value":["meta-2","archives-2","recent-comments-2"],"transport":"refresh"},"sidebars_widgets[sidebar-1]":{"value":["search-2","recent-posts-2","categories-2"],"transport":"refresh"},"blogname":{"value":"karimunnews[.]com","transport":"postMessage"},"blogdescription":{"value":"Warta Berita Karimun","transport":"postMessage"},"header_textcolor":{"value":"#ffffff","transport":"postMessage"},"background_color":{"value":"#303030","transport":"postMessage"},"header_image":{"value":"remove-header","transport":"refresh"},"header_image_data":{"value":"","transport":"refresh"},"background_image":{"value":"","transport":"postMessage"},"background_image_thumb":{"value":"","transport":"refresh"},"background_repeat":{"value":"no-repeat","transport":"postMessage"},"background_position_x":{"value":"left","transport":"postMessage"},"background_attachment":{"value":"fixed","transport":"postMessage"},"show_on_front":{"value":"posts","transport":"refresh"},"page_on_front":{"value":"0","transport":"refresh"},"page_for_posts":{"value":"0","transport":"refresh"},"writr_background_size":{"value":false,"transport":"postMessage"},"writr_wider_style":{"value":true,"transport":"refresh"},"writr_color_scheme":{"value":"blue","transport":"refresh"}},"controls":{"writr_color_scheme":{"settings":{"default":"writr_color_scheme"},"type":"select"},"writr_wider_style":{"settings":{"default":"writr_wider_style"},"type":"checkbox"},"writr_background_size":{"settings":{"default":"writr_background_size"},"type":"checkbox"},"page_for_posts":{"settings":{"default":"page_for_posts"},"type":"dropdown-pages"},"page_on_front":{"settings":{"default":"page_on_front"},"type":"dropdown-pages"},"show_on_front":{"settings":{"default":"show_on_front"},"type":"radio"},"background_attachment":{"settings":{"default":"background_attachment"},"type":"radio"},"background_position_x":{"settings":{"default":"background_position_x"},"type":"radio"},"background_repeat":{"settings":{"default":"background_repeat"},"type":"radio"},"background_image":{"settings":{"default":"background_image"},"type":"image","removed":"","context":"custom-background","extensions":"jpg,jpeg,gif,png","statuses":{"":"No Image"}},"header_image":{"settings":{"default":"header_image","data":"header_image_data"},"type":"header","removed":"remove-header","context":"custom-header","extensions":"jpg,jpeg,gif,png","statuses":{"":"No Image"}},"background_color":{"settings":{"default":"background_color"},"type":"color","statuses":{"":"Default"}},"header_textcolor":{"settings":{"default":"header_textcolor"},"type":"color","statuses":{"":"Default"}},"display_header_text":{"settings":{"default":"header_textcolor"},"type":"checkbox"},"blogdescription":{"settings":{"default":"blogdescription"},"type":"text"},"blogname":{"settings":{"default":"blogname"},"type":"text"},"widget_categories[2]":{"settings":{"default":"widget_categories[2]"},"type":"widget_form","widget_id":"categories-2","widget_id_base":"categories","sidebar_id":"sidebar-1","width":250,"height":200,"is_wide":false},"widget_recent-posts[2]":{"settings":{"default":"widget_recent-posts[2]"},"type":"widget_form","widget_id":"recent-posts-2","widget_id_base":"recent-posts","sidebar_id":"sidebar-1","width":250,"height":200,"is_wide":false},"widget_search[2]":{"settings":{"default":"widget_search[2]"},"type":"widget_form","widget_id":"search-2","widget_id_base":"search","sidebar_id":"sidebar-1","width":250,"height":200,"is_wide":false},"sidebars_widgets[sidebar-1]":{"settings":{"default":"sidebars_widgets[sidebar-1]"},"type":"sidebar_widgets","sidebar_id":"sidebar-1"}},"nonce":{"save":"2c58bc6de6","preview":"e95d734337"}};
+	</script>
+</div>
+
+
+</body></html>

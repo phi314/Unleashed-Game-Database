@@ -1,0 +1,42 @@
+<h4>
+	Todo
+	<%= link_to 'games/new',  class: 'btn btn-xs btn-danger'  do %>
+		new game <i class='fui-plus'></i>
+	<% end %>
+</h4>
+
+<table class="table" id="games-table">
+	<thead>
+		<tr>
+			<th>Title</th>
+			<th>Genre</th>
+			<th>Publisher</th>
+			<th>Year</th>
+			<th>Size</th>
+			<th>Disc</th>
+			<th>Avl</th>
+			<th>Action</th>
+		</tr>
+	</thead>
+	<tbody>
+		<% @games.each do |game| %>
+			<tr>
+				<td><%= link_to game.title.titleize, game_path(game) %></td>
+				<td><%= game.genre.downcase.gsub ',','|' %></td>
+				<td><%= game.publisher.titleize %></td>
+				<td><%= game.year %></td>
+				<td><%= game.size.nil? ? '-' : game.size %></td>
+				<td><%= game.total_disc %></td>
+				<td>
+					<% if game.available? %>
+						<i class="fui-check"></i>
+					<% else %>
+						<i class="fui-cross"></i>
+					<% end %>
+				</td>
+				<td>
+					<%= link_to "check", "todo/#{game.id}", method: :put, data: {confirm: "Are you sure?"}, class: "btn btn-xs btn-success" %>
+				</td>
+		<% end %>
+	</tbody>
+</table>

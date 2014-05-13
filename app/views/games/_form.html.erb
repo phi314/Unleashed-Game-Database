@@ -1,0 +1,68 @@
+<h4>Game</h4>
+<%= form_for @game do |f| %>
+	<% if @game.errors.any? %>
+		<div id="error_explanation">
+			
+			<div class="alert alert-danger">
+				<ul>
+					<% @game.errors.full_messages.each do |msg| %>
+						<li><%= msg %></li>
+					<% end %>
+				</ul>
+			</div>
+			
+		</div>
+	<% end %>
+<div class="row">
+	<div class="col-md-4">
+		<div class="form-group">
+			<%= f.label :title %>
+			<%= f.text_field :title, class: 'form-control' %>
+		</div>
+		<div class="form-group">
+			<%= f.label :genre %>
+			<%= f.text_field :genre, class: 'form-control' %>
+		</div>		
+		<div class="form-group">
+			<%= f.label :publisher %>
+			<%= f.text_field :publisher, class: 'form-control' %>
+		</div>
+		<div class="form-group">
+			<%= f.label :year %>
+			<%= f.text_field :year, class: 'form-control' %>
+		</div>
+	</div>
+	<div class="col-md-4">
+		<div class="form-group">
+			<%= f.label :size %>
+			<%= f.text_field :size, class: 'form-control' %>
+		</div>
+		<div class="form-group">
+			<%= f.label :total_disc %>
+			<%= f.text_field :total_disc, class: 'form-control' %>
+		</div>
+		<div class="form-group">
+			<%= f.label :media %>
+			<%= f.select :media, options_for_select([["Disc"], ["Hardisk"], ["Both"]], @game.media), {}, :class => 'form-control' %>
+		</div>
+		<div class="form-group">
+			<%= f.check_box :available %>
+			<%= f.label "Uncheck if game Unavailable" %>
+		</div>
+	</div>
+
+	<div class="col-md-4">
+		<div class="form-group">
+			<% if @game.persisted? %>
+					<% if File.exist?("#{Rails.root}/public/uploads/#{params[:id]}.jpg") %>
+						<%= image_tag "/uploads/#{params[:id]}.jpg", class: "img-responsive" %>
+					<% end %>
+			<% end %>
+
+			<%= f.label :image %>
+			<%= f.file_field :image %>
+		</div>
+		<%= f.submit class: 'btn btn-primary' %>
+	</div>
+</div>
+<% end %>

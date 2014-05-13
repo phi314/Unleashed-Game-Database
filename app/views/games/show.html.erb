@@ -1,0 +1,66 @@
+<h2>
+	<%= "#{@game.title}" %>
+	<%= link_to "/games/#{@game.id}/edit", :class => 'btn btn-xs btn-warning'  do %>
+		Update <i class='fui-new'></i>
+	<% end %>
+</h2>
+<div class="row">
+	<div class="col-sm-4">
+		<% if File.exist?("#{Rails.root}/public/uploads/#{params[:id]}.jpg") %>
+			<%= image_tag "/uploads/#{params[:id]}.jpg", class: "img-responsive show-img" %>
+		<% else %>
+			<%= image_tag "image_not_available.jpg", class: "img-responsive show-img" %>
+		<% end %>
+	</div>
+	<div class="col-sm-6">
+		<div class="todo" id="show-games">      
+            <ul>
+              <li>
+              	
+              		<div class="todo-icon fui-arrow-right"></div>
+	                <div class="todo-content">
+	                  <h4 class="todo-name">
+	                    <%= @game.genre.gsub ',', ' | ' %>
+	                  </h4>
+	                  	Genre
+	                </div>
+
+	         </li>
+              <li>
+              
+              		<div class="todo-icon fui-arrow-right"></div>
+	                <div class="todo-content">
+	                  <h4 class="todo-name">
+	                    <%= @game.year %>
+	                  </h4>
+	                  	Year
+	                </div>
+
+              </li>
+              <li>
+
+              		<div class="todo-icon fui-arrow-right"></div>
+	                <div class="todo-content">
+	                  <h4 class="todo-name">
+	                    <%= @game.publisher %>
+	                  </h4>
+	                  	Publisher
+	                </div>
+              </li>
+            </ul>
+            <sub>
+				<%= "C:#{@game.created_at.localtime} U:#{@game.updated_at.localtime}" %>
+            </sub>
+        </div>
+	</div>
+	<div class="col-sm-2">
+		<div class="show-widget">
+	    	<h2>Size</h2>
+	    	<%= "#{@game.size} Gigabyte" %>
+	    	<br>
+	    	<%= "#{@game.total_disc} Dvd" %>
+	    	<br>
+	    	<strong><%= "Storage: #{@game.media}" %></strong>
+	    </div>
+    </div>
+</div>
